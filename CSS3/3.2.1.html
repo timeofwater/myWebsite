@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>盒模型</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    CSS盒模型是一种思维模型,适用于所有文档元素
+    其中&lt;div&gt;标签最典型
+
+        <img src="../pictures/boxModel.png" alt="boxModel" width="400" height="200">
+
+    <em>其四个方向亦可分别设置</em>
+
+    margin, border, padding初始值为0,但标签的默认值各不相同
+    对所有元素样式初始化:
+    <code>
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    </code>
+    <em>( * )是通配符选择器,可以匹配所有元素</em>
+    <em>注: 此方法会大大影响浏览器的渲染时间</em>
+
+</pre>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

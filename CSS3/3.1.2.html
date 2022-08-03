@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS基本语法</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    CSS的基本语句格式为:
+        选择器{属性:属性值;}    <em>选择器:通常是需要定义的HTML元素或标签</em>
+                                <em>属性:元素属性</em>
+<code>
+    p {
+        text-indent: 2em;
+    }
+</code>
+    组合选择器:
+        选择器,选择器{属性:属性值;}
+<code>
+    a,p {
+        text-indent: 2em;
+    }
+</code>
+    包含选择器:
+        外选择器 内选择器{属性:属性值;}
+<code>
+    table p {
+        text-indent: 2em;
+    }
+</code>
+
+</pre>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

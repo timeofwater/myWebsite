@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>显示属性</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>
+<pre>
+    display: inline | block | inline-block | none
+
+    inline: 行内元素, 自动宽高, 同行显示
+
+    block: 块元素, 控制宽高, 换行显示
+
+    inline-block: 行内块元素, 控制宽高, 同行显示
+
+    none: 不显示
+
+    <em>原则:</em>
+        p, dt, h1, h2... 原行内元素, 不能套block
+        a可以套block, 但最好是block里套a, a设置成块元素
+</pre>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

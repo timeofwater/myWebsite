@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>边距</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    margin:
+        Values:&lt;all&gt; | &lt;top and bottom&gt; &lt;right and left&gt; | &lt;top&gt; &lt;right and left&gt; &lt;bottom&gt; | &lt;top&gt; &lt;right&gt; &lt;bottom&gt; &lt;left&gt;
+
+    margin-:
+        top
+        bottom
+        left
+        right
+
+    margin取值:
+        auto
+        <em>垂直方向一般为0</em>
+        <em>水平方向一般用来填补水平方向上非浮动方块元素各部分宽度之和的差,且CSS自动居中有宽度的块</em>
+        长度值(cm,mm,in,pt,em,px)
+        百分比
+
+    外边距合并:
+        垂直方向两块合并成较大值
+        无内容块与周围块合并成较大值
+        块级父元素与其第一级/最后一个子元素合并成较大值
+        设置了overflow:hidden的不合并
+        行内元素,浮动元素,绝对定位元素不合并
+        有border的块级父元素
+
+    外边距相加:
+        水平方向相加
+        取负值时相加
+
+    padding:
+        Values:&lt;all&gt; | &lt;top and bottom&gt; &lt;right and left&gt; | &lt;top&gt; &lt;right and left&gt; &lt;bottom&gt; | &lt;top&gt; &lt;right&gt; &lt;bottom&gt; &lt;left&gt;
+
+    内边距(/内填充)的取值:
+        长度值: 可以使用所有长度值(cm,mm,in,pt,em,px).
+        百分比值: 相对于元素所在的父元素宽度.
+</pre>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

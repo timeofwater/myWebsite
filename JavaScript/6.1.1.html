@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript基础</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="navigator">
+    <a id="logo" href="../index.html"></a>
+    <a class="normal" href="../CSS3/index.html">CSS</a>
+    <a class="normal" href="../JavaScript/index.html">JS</a>
+    <a class="normal" href="../PTE/PTE.html">周期表</a>
+    <a class="normal" href="../Goals/tables.php">目标收集</a>
+</div>
+<pre>
+使用JavaScript有三种方式:
+    1.在网页中加入&lt;script&gt;标签
+    2.引用.js文件
+    3.作为连接或事件属性
+
+    1.&lt;script&gt;用法类似于PHP
+
+    2.使用<code>&lt;script src="***.js"&gt;</code>
+
+    3.例如&lt;a href="语句"&gt;
+        <code>&lt;input type="button" value="***" onclick="语句"&gt;</code>
+
+<em>
+    注释为// 不同于html的&lt;!-   --&gt;
+</em>
+
+调试:
+    通常,JavaScript出现错误与php相似,没有提示信息
+    可以使用console.log();输出在浏览器Console调试窗口中
+    <script>console.log("这是一条调试信息");</script>
+
+    <script>
+        text1 = "我是一个弹窗";
+        text2 = "默认值";
+    </script>
+    弹窗:<code>
+        1.window.alert("提示信息");
+        <a href="javascript:window.alert(text1);">点击出现弹窗</a>
+        2.window.confirm("提示信息"); / window.confirm("提示信息","默认值");
+        <a href="javascript:window.confirm(text1);">点击出现弹窗</a>
+        3.window.prompt("提示信息"); / window.prompt("提示信息","默认值");
+        <a href="javascript:window.prompt(text1,text2);">点击出现弹窗</a>
+</code>
+    <em>window.可省略
+    默认值指默认选中/填写的值</em>
+
+</pre>
+</body>
+</html>

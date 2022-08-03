@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>节点访问</title>
+    <link rel="stylesheet" href="Note.css" type="text/css"/>
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="navigator">
+    <a id="logo" href="../index.html"></a>
+    <a class="normal" href="../CSS3/index.html">CSS</a>
+    <a class="normal" href="../JavaScript/index.html">JS</a>
+    <a class="normal" href="../PTE/PTE.html">周期表</a>
+    <a class="normal" href="../Goals/tables.php">目标收集</a>
+</div>
+<pre>
+子节点:
+    元素.childNodes           返回第一级子节点集合
+    元素.children             返回第一级元素子节点集合
+    元素.firstChild           返回第一个子节点
+    元素.firstElementChild    返回第一个元素子节点
+    元素.lastChild            返回最后一个子节点
+    元素.lastElementChild     返回最后一个元素子节点
+
+父节点:
+    元素.parentNode           返回第一级父节点
+    元素.offsetParent         返回第一级定位父节点, 默认为body
+    <em>用 style = "position:relative"属性定位</em>
+
+兄弟节点:
+    元素.nextSibling          返回下一个兄弟节点
+    元素.nextElementSibling   返回下一个元素兄弟节点
+    元素.previousSibling      返回上一个兄弟节点
+    元素.previousElementSibling
+                              返回上一个元素兄弟节点
+</pre>
+</body>
+</html>

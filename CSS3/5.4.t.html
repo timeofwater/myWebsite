@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>泡泡选项卡</title>
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <link rel="stylesheet" href="5.4.t.css" type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+<body>
+<div class="outZ">
+    <div id="container" class="innerZ">
+        <div id="i1" class="Z"><a href="#" onclick="changeActiveI('container', 'i1', 'Z', 'activeI');">
+            <div class="icon"><i class="icon ion-chatbox"></i></div>
+            <div class="text">message</div>
+        </a></div>
+        <div id="i2" class="Z"><a href="#" onclick="changeActiveI('container', 'i2', 'Z', 'activeI');">
+            <div class="icon"><i class="icon ion-person"></i></div>
+            <div class="text">friends</div>
+        </a></div>
+        <div id="i3" class="Z"><a href="#" onclick="changeActiveI('container', 'i3', 'Z', 'activeI');">
+            <div class="icon"><i class="icon ion-xbox"></i></div>
+            <div class="text">game</div>
+        </a></div>
+        <div id="i4" class="Z"><a href="#" onclick="changeActiveI('container', 'i4', 'Z', 'activeI');">
+            <div class="icon"><i class="icon ion-music-note"></i></div>
+            <div class="text">music</div>
+        </a></div>
+    </div>
+</div>
+
+<script>
+    function changeActiveI(container_id, id, normal_class, active_class) {
+        var childrenNodes = document.getElementById(container_id).children;
+        for (var i = 0; i < childrenNodes.length; i++) {
+            childrenNodes[i].className = normal_class;
+        }
+        document.getElementById(id).className += " " + active_class;
+    }
+
+    changeActiveI("container", "i1", "Z", "activeI");
+
+</script>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

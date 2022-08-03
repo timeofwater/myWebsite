@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>星级评分</title>
+    <script src="../Js/star.js"></script>
+    <link href="../Css/star.css" rel="stylesheet" type="text/css"/>
+    <link href="Note.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="navigator">
+    <a id="logo" href="../index.html"></a>
+    <a class="normal" href="../CSS3/index.html">CSS</a>
+    <a class="normal" href="../JavaScript/index.html">JS</a>
+    <a class="normal" href="../PTE/PTE.html">周期表</a>
+    <a class="normal" href="../Goals/tables.php">目标收集</a>
+</div>
+<div class="box">
+    <ul id="ul">
+        <li><span class="star"></span></li>
+        <li><span class="star"></span></li>
+        <li><span class="star"></span></li>
+        <li><span class="star"></span></li>
+        <li><span class="star"></span></li>
+    </ul>
+</div>
+
+<pre>
+    <a href="../pictures/stars.jpg">素材下载</a>
+    <code>
+    &lt;style&gt;
+
+    div, li, ul {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+
+    li {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+    }
+
+    ul {
+        background-color: #eeeeee;
+    }
+
+    .box {
+        display: block;
+        margin: 50px;
+    }
+
+    .star {
+        display: block;
+        width: 9px;
+        height: 10px;
+        background: url("../pictures/star.png") no-repeat;
+        cursor: pointer;
+    }
+
+    .on {
+        background-position: 0 -10px;
+    }
+    &lt;style&gt;
+
+    &lt;body&gt;
+    &lt;div class="box"&gt;
+        &lt;ul id="ul"&gt;
+            &lt;li&gt;&lt;span class="star"&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class="star"&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class="star"&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class="star"&gt;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;span class="star"&gt;&lt;/span&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;script type="text/javascript"&gt;
+        let aStar = document.getElementsByClassName("star");
+        let objectUl = document.getElementById("ul");
+        let length = aStar.length;
+        let score = -1;
+
+        for (let i = 0; i &lt; length; i++) {
+            aStar[i].onmouseenter = function () {
+                for (let j = 0; j &lt; length; j++) {
+                    aStar[j].className = (j &lt;= i) ? "star on" : "star";
+                }
+            }
+            aStar[i].onclick = function () {
+                score = i;
+            }
+            objectUl.onmouseleave = function () {
+                for (let j = 0; j &lt; length; j++) {
+                    aStar[j].className = (j &lt;= score) ? "star on" : "star";
+                }
+            }
+        }
+    &lt;/script&gt;
+    &lt;/body&gt;
+    </code>
+</pre>
+
+<script type="text/javascript">
+    let aStar = document.getElementsByClassName("star");
+    let objectUl = document.getElementById("ul");
+    let length = aStar.length;
+    let score = -1;
+
+    for (let i = 0; i < length; i++) {
+        aStar[i].onmouseenter = function () {
+            for (let j = 0; j < length; j++) {
+                aStar[j].className = (j <= i) ? "star on" : "star";
+            }
+        }
+        aStar[i].onclick = function () {
+            score = i;
+        }
+        objectUl.onmouseleave = function () {
+            for (let j = 0; j < length; j++) {
+                aStar[j].className = (j <= score) ? "star on" : "star";
+            }
+        }
+    }
+</script>
+</body>
+</html>

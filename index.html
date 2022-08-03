@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="shortcut icon" href="pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="Css/general.css" type="text/css">
+    <link rel="stylesheet" href="Css/navigator.css" type="text/css">
+    <style type="text/css">
+        /*
+           font
+         */
+        @font-face {
+            font-family: 'YEXNYXHMM';
+            src: url("font/FZSJ-YEXNYXHMM.TTF");
+        }
+
+        body {
+            font-family: 'YEXNYXHMM', cursive;
+            font-size: 50px;
+            text-shadow: none;
+        }
+    </style>
+    <style type="text/css">
+        /*
+           index
+        */
+        .Index {
+            width: 100%;
+            height: auto;
+            font-size: 30px;
+            text-align: center;
+            margin: 50px auto;
+            color: #a8afbe;
+        }
+
+        li.index {
+            margin: 10px auto;
+        }
+
+        li.index a {
+            color: #ffff00;
+        }
+
+        ol.index {
+            width: 200px;
+            height: auto;
+            font-size: 20px;
+            text-align: center;
+            margin: 20px auto;
+            color: #a8afbe;
+        }
+    </style>
+    <style type="text/css">
+        /*
+           bottom
+         */
+        #bottom {
+            position: absolute;
+            bottom: 100px;
+            height: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #bottom_anchor {
+            color: #a8afbe;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="Index">目录</div>
+<ol class="index"></ol>
+<div id="bottom">
+    <a id="bottom_anchor" href="http://beian.miit.gov.cn/">冀ICP备2021007054号</a>
+</div>
+<script src="Js/navigator.js"></script>
+<script>
+    for (var i = 0; i < index_tags_names.length; i++) {
+        var li = document.createElement("li");
+        li.setAttribute("class", "index");
+        var anchor = document.createElement("a");
+        anchor.setAttribute("href",index_tags_addresses[i]);
+        anchor.innerHTML = index_tags_names[i];
+        li.appendChild(anchor);
+        document.getElementsByClassName("index")[0].appendChild(li);
+    }
+</script>
+</body>
+</html>

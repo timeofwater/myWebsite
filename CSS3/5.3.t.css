@@ -1,0 +1,123 @@
+:root {
+    --right-deg: 90deg;
+    --acute-deg: 60deg;
+}
+
+#div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#center-div {
+    display: flow;
+    position: absolute;
+    top: 205px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background: radial-gradient(#e7d284, #cb8915, #a33917);
+}
+
+.inner-div {
+    display: flow;
+    position: absolute;
+    top: 200px;
+    width: 200px;
+    height: 50px;
+    -webkit-mask: url("../pictures/marguerite-mask.png") no-repeat;
+    transform: rotate(var(--right-deg));
+    rotation-point: 10px;
+    background: #d1d1d7;
+    opacity: 0;
+}
+
+#i1 {
+    transform: rotate(var(--acute-deg));
+    animation: rotate 6s 0s infinite,
+    appear 12s 0s infinite;
+}
+
+#i2 {
+    transform: rotate(calc(var(--acute-deg) * 2));
+    animation: rotate 6s 1s infinite,
+    appear 12s 1s infinite;
+}
+
+#i3 {
+    transform: rotate(calc(var(--acute-deg) * 3));
+    animation: rotate 6s 2s infinite,
+    appear 12s 2s infinite;
+}
+
+#i4 {
+    transform: rotate(calc(var(--acute-deg) * 4));
+    animation: rotate 6s 3s infinite,
+    appear 12s 3s infinite;
+}
+
+#i5 {
+    transform: rotate(calc(var(--acute-deg) * 5));
+    animation: rotate 6s 4s infinite,
+    appear 12s 4s infinite;
+}
+
+#i6 {
+    transform: rotate(calc(var(--acute-deg) * 6));
+    animation: rotate 6s 5s infinite,
+    appear 12s 5s infinite;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(calc(var(--acute-deg) * 1));
+    }
+
+    16% {
+        transform: rotate(calc(var(--acute-deg) * 2));
+    }
+
+    33% {
+        transform: rotate(calc(var(--acute-deg) * 3));
+    }
+
+    50% {
+        transform: rotate(calc(var(--acute-deg) * 4));
+    }
+
+    66% {
+        transform: rotate(calc(var(--acute-deg) * 5));
+    }
+
+    83% {
+        transform: rotate(calc(var(--acute-deg) * 6));
+    }
+
+    100% {
+        transform: rotate(calc(var(--acute-deg) * 7));
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 100%;
+    }
+
+    58% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>获取元素及操作内容</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="navigator">
+    <a id="logo" href="../index.html"></a>
+    <a class="normal" href="../CSS3/index.html">CSS</a>
+    <a class="normal" href="../JavaScript/index.html">JS</a>
+    <a class="normal" href="../PTE/PTE.html">周期表</a>
+    <a class="normal" href="../Goals/tables.php">目标收集</a>
+</div>
+<pre>
+基本格式:
+    获取元素.事件=行为;
+    <code>
+    document.getElementBtId('someId').onclick = function(){}
+    </code>
+
+    获取元素的方法:
+        <code>document.getElementById()</code>
+            通过id获取
+        <code>document.getElementByClassName()</code>
+            通过class名获取 不支持IE8以下
+        <code>document.getElementByTagName()</code>
+            通过标签名获取
+        <code>document.getElementByName()</code>
+            通过名称获取
+        <code>document.querySelector()</code>
+            通过CSS选择器获取第一个元素 支持IE8以上
+        <code>document.querySelectorAll()</code>
+            通过CSS选择器获取所有元素 支持IE8以上
+        <code>document.documentElement.***</code>
+            获取&lt;html&gt;中的标签
+        <code>document.head.***</code>
+            获取&lt;head&gt;中的标签
+        <code>document.title</code>
+            获取title
+        <code>document.body</code>
+            获取body
+
+    <em>嵌套结构从子元素开始结算</em>
+
+    操作:
+        <code>innerHTML</code>
+            设置或获取对象标签内的HTML
+        <code>innerText</code>
+            设置或获取对象标签内的文本
+        <code>outerHTML</code>
+            设置或获取对象标签及其内容的HTML
+        <code>outerText</code>
+            设置或获取对象标签及其内容的文本
+
+    变量:
+        JavaScript的变量具有动态性和弱类型
+        var *** = ***;
+        声明与定义全局通用,没有顺序
+        <em>
+            ES6中的关键字为let,const
+            ES6的顺序、作用域较强
+        </em>
+</pre>
+</body>
+</html>

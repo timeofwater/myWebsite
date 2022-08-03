@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>串珠棋</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border-width: 0;
+        }
+
+        p {
+            top: 0;
+            display: block;
+            position: fixed;
+            color: #a8afbe;
+            user-select: none;
+        }
+
+        div {
+            display: inline-block;
+            position: fixed;
+        }
+    </style>
+</head>
+<body style="background-color: #24334a">
+
+<p id="rule">规则：二人轮流下一棋；大棋可以覆盖小棋(每种棋各三颗）；同颜色先连成三棋一线者胜。</p>
+
+<script>
+    let bodyObject = document.getElementsByTagName("body")[0];
+    let sizePx = (window.innerWidth < window.innerHeight) ? window.innerWidth / 20 : window.innerHeight / 20;
+    let pHeight = document.getElementById("rule").clientHeight;
+</script>
+<script>
+    let blue11 = document.createElement("div");
+    let blue12 = document.createElement("div");
+    let blue13 = document.createElement("div");
+    let blue21 = document.createElement("div");
+    let blue22 = document.createElement("div");
+    let blue23 = document.createElement("div");
+    let blue31 = document.createElement("div");
+    let blue32 = document.createElement("div");
+    let blue33 = document.createElement("div");
+    let blues = [[blue11, blue12, blue13], [blue21, blue22, blue23], [blue31, blue32, blue33]];
+
+    let red11 = document.createElement("div");
+    let red12 = document.createElement("div");
+    let red13 = document.createElement("div");
+    let red21 = document.createElement("div");
+    let red22 = document.createElement("div");
+    let red23 = document.createElement("div");
+    let red31 = document.createElement("div");
+    let red32 = document.createElement("div");
+    let red33 = document.createElement("div");
+    let reds = [[red11, red12, red13], [red21, red22, red23], [red31, red32, red33]];
+
+    let isMoving;
+    let touchX;
+    let touchY;
+
+    for (let i = 0; i < blues.length; i++) {
+        for (let j = 0; j < blues[i].length; j++) {
+            with (blues[i][j]) {
+                style.height = sizePx * (i + 1) + "px";
+                style.width = sizePx * (i + 1) + "px";
+                style.left = sizePx * accSum(i + 1) + "px";
+                style.top = sizePx * 1.5 + pHeight + "px";
+                style.zIndex = i - (-5) + "";
+                style.borderStyle = "solid";
+                style.borderWidth = "1px";
+                style.borderColor = "#a8afbe";
+                style.borderRadius = sizePx * 0.5 * (i + 1) + "px";
+                style.backgroundColor = "#0000FF";
+                onmousedown = function (event) {
+                    isMoving = true;
+                    touchX = event.pageX;
+                    touchY = event.pageY;
+                }
+
+                onmousemove = function (event) {
+                    movedX = event.pageX;
+                    movedY = event.pageY;
+                    dx = movedX - touchX;
+                    dy = movedY - touchY;
+                    touchX = movedX;
+                    touchY = movedY;
+                    if (isMoving) {
+                        style.left = (style.left.slice(0, -2) - (-dx)) + "px";
+                        style.top = (style.top.slice(0, -2) - (-dy)) + "px";
+                    }
+                }
+
+                onmouseup = function () {
+                    isMoving = false;
+                }
+
+                ontouchstart = onmousedown;
+                ontouchmove = onmousemove;
+                ontouchend = onmouseup;
+            }
+            bodyObject.appendChild(blues[i][j]);
+        }
+    }
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            let grid = document.createElement("div");
+            with (grid) {
+                style.height = sizePx * 3 + "px";
+                style.width = sizePx * 3 + "px";
+                style.left = sizePx * 3 * j + "px";
+                style.top = sizePx * 3 * (i - (-1.5))+ pHeight  + "px";
+                style.borderStyle = "solid";
+                style.borderWidth = "1px";
+                style.borderColor = "#a8afbe";
+                style.userSelect = "none";
+            }
+            bodyObject.appendChild(grid);
+        }
+    }
+
+    for (let i = 0; i < reds.length; i++) {
+        for (let j = 0; j < reds[i].length; j++) {
+            with (reds[i][j]) {
+                style.height = sizePx * (i + 1) + "px";
+                style.width = sizePx * (i + 1) + "px";
+                style.left = sizePx * accSum(i + 1) + "px";
+                style.top = sizePx * 13.5+ pHeight  + "px";
+                style.zIndex = i - (-5) + "";
+                style.borderStyle = "solid";
+                style.borderWidth = "1px";
+                style.borderColor = "#a8afbe";
+                style.borderRadius = sizePx * 0.5 * (i + 1) + "px";
+                style.backgroundColor = "#FF0000";
+                onmousedown = function (event) {
+                    isMoving = true;
+                    touchX = event.pageX;
+                    touchY = event.pageY;
+                }
+
+                onmousemove = function (event) {
+                    movedX = event.pageX;
+                    movedY = event.pageY;
+                    dx = movedX - touchX;
+                    dy = movedY - touchY;
+                    touchX = movedX;
+                    touchY = movedY;
+                    if (isMoving) {
+                        style.left = (style.left.slice(0, -2) - (-dx)) + "px";
+                        style.top = (style.top.slice(0, -2) - (-dy)) + "px";
+                    }
+                }
+
+                onmouseup = function () {
+                    isMoving = false;
+                }
+
+                ontouchstart = onmousedown;
+                ontouchmove = onmousemove;
+                ontouchend = onmouseup;
+            }
+            bodyObject.appendChild(reds[i][j]);
+        }
+    }
+
+    bodyObject.onclick = function (){
+        isMoving = false;
+    }
+
+    function accSum(num) {
+        let result = 0;
+        for (let i = 0; i < num; i++) {
+            result += i;
+        }
+        return result;
+    }
+
+</script>
+</body>
+</html>

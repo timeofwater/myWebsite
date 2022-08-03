@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    类选择器,即样式的分类选择器,可以根据不同的风格对某标签设置几种不同的CSS属性,或将整个风格分成几个类
+
+    创建类选择器:
+        元素.类选择器{属性:属性值;}
+        <em>层叠性</em>
+        .类选择器{属性:属性值}
+        <em>定义多个标签的类选择器</em>
+
+    引用类选择器:
+        &lt;标签 class="类选择器"&gt;
+        <em>类选择器不加前后缀</em>
+        &lt;标签 class="类选择器1 类选择器2"&gt;
+        <em>引用多个类选择器于此标签时用空格隔开</em>
+
+<code>
+    .setCenter {
+        font-size: 10px;
+        color: red;
+        text-align: center;
+    }
+
+    &lt;a class="setCenter"&gt;目录&lt;/a&gt;
+</code>
+
+    id属性对单一元素进行识别
+
+    id选择器的创建:
+        元素#id选择器{属性:属性值;}
+        #id选择器{属性:属性值;}
+        <em>更常见的用法,不针对某个元素</em>
+
+    id选择器的引用:
+        &lt;标签 id="id选择器"&gt;
+
+<code>
+    #setCenter {
+        font-size: 10px;
+        color: red;
+        text-align: center;
+    }
+
+    &lt;a id="setCenter"&gt;目录&lt;/a&gt;
+</code>
+</pre>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

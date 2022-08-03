@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <link rel="stylesheet" href="Note.css" type="text/css"/>
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="navigator">
+    <a id="logo" href="../index.html"></a>
+    <a class="normal" href="../CSS3/index.html">CSS</a>
+    <a class="normal" href="../JavaScript/index.html">JS</a>
+    <a class="normal" href="../PTE/PTE.html">周期表</a>
+    <a class="normal" href="../Goals/tables.php">目标收集</a>
+</div>
+<pre>
+DOM简介:
+    文档对象模型(DOM, documents object model)是HTML和XML的编程接口.DOM将文档解析为一个由节点和对象组成的结构集合.
+    它提供了对文档的结构化的表述,并定义了一种方式可以从程序中对该结构进行访问,从而改变文档的结构,样式和内容.
+    总之,DOM将web页面与程序语言连接起来.
+
+HTML DOM节点:
+    DOM将HTML文档表达为树结构,由若干节点(Node)组成.
+
+                                 (属性节点)    (属性节点)
+                                     |             |
+    文档节点-根元素节点&lt;html&gt;-元素节点&lt;head&gt;-元素节点&lt;***&gt;-文本节点"***"
+                    |
+            元素节点&lt;body&gt;-元素节点&lt;***&gt;-文本节点"***"
+                    |             |
+               (属性节点)    (属性节点)
+
+
+    Node       nodeType       nodeName      nodeValue
+    元素          1         标签名(大写)      null
+    属性          2           属性名         属性值
+    文本          3           #text         文本内容
+    注释          8          #comment       注释内容
+    文档          9          #document        null
+    文档类型      10           html           null
+    文档片段      11     #document-fragment   null
+    <em>完整的DOM节点共12种,其余节点为XML节点</em>
+
+    元素节点(element node):
+        元素.nodeType = 1
+        元素.nodeName = 标签名(大写)
+        元素.nodeValue = null
+
+        <code>objectSpan.innerHTML"body.nodeType="+document.body.nodeType+" body.nodeName="+document.body.nodeName+" body.nodeValue="+document.body.nodeValue;</code>
+        <span id="EN"></span><script>document.getElementById("EN").innerHTML="body.nodeType="+document.body.nodeType+" body.nodeName="+document.body.nodeName+" body.nodeValue="+document.body.nodeValue;</script>
+
+    属性节点(attribute node):
+        元素.nodeType = 2
+        元素.nodeName = 属性名
+        元素.nodeValue = 属性值
+
+    文本节点(text node):
+        元素.nodeType = 3
+        元素.nodeName = #text
+        元素.nodeValue = 文本内容
+
+    注释节点(comment node):
+        元素.nodeType = 8
+        元素.nodeName = #comment
+        元素.nodeValue = 注释内容
+
+    文档节点/根节点(document node):
+        document.nodeType = 9
+        document.nodeName = #document
+        document.nodeValue = null
+
+    文档类型节点(DocumentType node):
+        document.firstChild.nodeType = 10
+        document.firstChild.nodeName = html
+        document.firstChild.nodeValue = null
+
+    文档片段节点(DocumentFragment node):
+        文档片段.nodeType = 11
+        文档片段.nodeName = #document-fragment
+        文档片段.nodeValue = 注释内容
+</pre>
+</body>
+</html>

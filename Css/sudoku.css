@@ -1,0 +1,12 @@
+#form_box {
+    display: inline-block;
+    margin: 50px;
+}
+
+#form_select_type, #form_select_type_label, #form_content {
+    display: inline-block;
+}
+
+#form_content {
+    width: 80em;
+}

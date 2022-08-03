@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>边框</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    border是一个复合属性,可以设置边框宽度、样式、颜色属性:
+        border: 宽度 样式 颜色;
+
+    border-:
+        top
+        right
+        bottom
+        left
+
+    width:
+        长度值: 可以使用所有长度值(cm,mm,in,pt,em,px).
+        medium: 默认值
+        thin: 比默认值细
+        thick: 比默认值粗
+
+    style:
+        none: 没有边框,即忽略边框的宽度;
+        dotted: 点线;
+        dashed: 虚线;
+        solid: 实线;
+        double: 双线;
+        groove: 3D凹槽;
+        ridge: 菱形边框;
+        inset: 3D凹边;
+        outset: 3D凸边;
+        hidden: 隐藏边框(IE不支持);
+
+    color:
+        3位十六进制颜色值:#000 ~ #FFF
+        6位十六进制颜色值:#000000 ~ #FFFFFF
+        <em>#CCC = #CCCCCC</em>
+
+        透明色: transparent
+
+        17标准颜色：黑色，蓝色，水，紫红色，灰色，绿色，石灰，栗色，海军，橄榄，橙，紫，红，白，银，蓝绿色，黄色
+</pre>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

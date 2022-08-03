@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A-Puzzle-A-Day</title>
+    <style>
+
+        * {
+            margin: 0;
+            border-width: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #24334a;
+            margin-top: 50px;
+        }
+
+        div {
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    //para
+    let bodyObject = document.getElementsByTagName("body")[0];
+    let sizePx = (window.innerWidth < window.innerHeight) ? window.innerWidth /20 : window.innerHeight / 20;
+    alert("1.拖动时请不要太快。\n2.每一天都可以拼出来哦！\n3.谜题本身版权所有不是站长。\n4.请关闭浏览器的左右滑动回退/前进功能。\n5.请关闭浏览器的下滑刷新功能。\n\n↓↓↓开始解密吧↓↓↓");
+</script>
+
+<table>
+    <tr>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+    </tr>
+    <tr>
+        <th>Jul</th>
+        <th>Aug</th>
+        <th>Sep</th>
+        <th>Oct</th>
+        <th>Nov</th>
+        <th>Dec</th>
+    </tr>
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+    </tr>
+    <tr>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+        <th>11</th>
+        <th>12</th>
+        <th>13</th>
+        <th>14</th>
+    </tr>
+    <tr>
+        <th>15</th>
+        <th>16</th>
+        <th>17</th>
+        <th>18</th>
+        <th>19</th>
+        <th>20</th>
+        <th>21</th>
+    </tr>
+    <tr>
+        <th>22</th>
+        <th>23</th>
+        <th>24</th>
+        <th>25</th>
+        <th>26</th>
+        <th>27</th>
+        <th>28</th>
+    </tr>
+    <tr>
+        <th>29</th>
+        <th>30</th>
+        <th>31</th>
+    </tr>
+</table>
+
+<script>
+    let table = document.getElementsByTagName("table")[0];
+    with (table) {
+        style.width = sizePx * 7 + "px";
+        style.height = sizePx * 7 + "px";
+        style.position = "absolute";
+        style.top = sizePx * 10 + "px";
+        style.left = (window.innerWidth - sizePx * 7) / 2 + "px";
+        style.userSelect = "none";
+        style.cellSpacing = "0px";
+        style.cellPadding = "0px";
+        style.borderSpacing = "0px";
+    }
+
+    let th = document.getElementsByTagName("th");
+    for (let i = 0; i < th.length; i++) {
+        with (th[i]) {
+            style.width = sizePx + "px";
+            style.height = sizePx + "px";
+            style.backgroundColor = "#FFF";
+            style.userSelect = "none";
+        }
+    }
+</script>
+
+<script>
+    //items
+
+    let item1_1 = document.createElement("div");
+    let item1_2 = document.createElement("div");
+    let item2_1 = document.createElement("div");
+    let item2_2 = document.createElement("div");
+    let item2_3 = document.createElement("div");
+    let item3_1 = document.createElement("div");
+    let item3_2 = document.createElement("div");
+    let item4_1 = document.createElement("div");
+    let item5_1 = document.createElement("div");
+    let item5_2 = document.createElement("div");
+    let item6_1 = document.createElement("div");
+    let item6_2 = document.createElement("div");
+    let item7_1 = document.createElement("div");
+    let item7_2 = document.createElement("div");
+    let item7_3 = document.createElement("div");
+    let item8_1 = document.createElement("div");
+    let item8_2 = document.createElement("div");
+    let items = [item1_1, item1_2, item2_1, item2_2, item2_3, item3_1, item3_2, item4_1, item5_1, item5_2, item6_1,
+        item6_2, item7_1, item7_2, item7_3, item8_1, item8_2];
+
+    with (bodyObject) {
+        for (let i = 0; i < items.length; i++) {
+            appendChild(items[i]);
+        }
+
+    }
+
+    let isMoved = false;
+    let isMoving = false;
+    let whichItemMoving = 0;
+    let firstTouchedX = 0;
+    let firstTouchedY = 0;
+    let touchX = 0;
+    let touchY = 0;
+    let movedX = 0;
+    let movedY = 0;
+    let dx = 0;
+    let dy = 0;
+    let itemForm1 = 1;
+    let itemForm2 = 1;
+    let itemForm3 = 1;
+    let itemForm4 = 1;
+    let itemForm5 = 1;
+    let itemForm6 = 1;
+    let itemForm7 = 1;
+    let itemForm8 = 1;
+
+    //防止误触
+    bodyObject.onclick = function () {
+        isMoving = false;
+        console.log(isMoving);
+    }
+
+    function initialize() {
+        //初始化各个item的大小位置
+        with (item1_1) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 2 + "px";
+            style.position = "absolute";
+            style.left = sizePx + "px";
+            style.top = "0";
+            style.backgroundColor = "#BF3F3F";
+        }
+        with (item1_2) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 3 + "px";
+            style.position = "absolute";
+            style.left = "0px";
+            style.top = sizePx + "px";
+            style.backgroundColor = "#BF3F3F";
+        }
+        with (item2_1) {
+            style.width = sizePx + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = "0px";
+            style.top = sizePx * 4 - (-5) + "px";
+            style.backgroundColor = "#BFBF3F";
+        }
+        with (item2_2) {
+            style.width = sizePx * 3 + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = "0px";
+            style.top = sizePx * 5 - (-5) + "px";
+            style.backgroundColor = "#BFBF3F";
+        }
+        with (item2_3) {
+            style.width = sizePx + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = sizePx * 2 + "px";
+            style.top = sizePx * 6 - (-5) + "px";
+            style.backgroundColor = "#BFBF3F";
+        }
+        with (item3_1) {
+            style.width = sizePx * 2 + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = sizePx * 2 - (-5) + "px";
+            style.top = "0px";
+            style.backgroundColor = "#3FBF3F";
+        }
+        with (item3_2) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 3 + "px";
+            style.position = "absolute";
+            style.left = sizePx * 4 - (-5) + "px";
+            style.top = "0px";
+            style.backgroundColor = "#3FBF3F";
+        }
+        with (item4_1) {
+            style.width = sizePx * 2 + "px";
+            style.height = sizePx * 3 + "px";
+            style.position = "absolute";
+            style.left = sizePx * 3 - (-5) + "px";
+            style.top = sizePx * 4 - (-5) + "px";
+            style.backgroundColor = "#3FBFBF";
+        }
+        with (item5_1) {
+            style.width = sizePx + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = sizePx * 5 - (-5 * 2) + "px";
+            style.top = "0px";
+            style.backgroundColor = "#3F3FBF";
+        }
+        with (item5_2) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 4 + "px";
+            style.position = "absolute";
+            style.left = sizePx * 6 - (-5 * 2) + "px";
+            style.top = "0px";
+            style.backgroundColor = "#3F3FBF";
+        }
+        with (item6_1) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 2 + "px";
+            style.position = "absolute";
+            style.left = sizePx * 5 - (-5 * 2) + "px";
+            style.top = sizePx * 4 - (-5) + "px";
+            style.backgroundColor = "#BF3FBF";
+        }
+        with (item6_2) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 3 + "px";
+            style.position = "absolute";
+            style.left = sizePx * 6 - (-5 * 2) + "px";
+            style.top = sizePx * 4 - (-5) + "px";
+            style.backgroundColor = "#BF3FBF";
+        }
+        with (item7_1) {
+            style.width = sizePx + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = sizePx * 7 - (-5 * 3) + "px";
+            style.top = sizePx * 4 - (-5) + "px";
+            style.backgroundColor = "#7F3FBF";
+        }
+        with (item7_2) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 3 + "px";
+            style.position = "absolute";
+            style.left = sizePx * 8 - (-5 * 3) + "px";
+            style.top = sizePx * 4 - (-5) + "px";
+            style.backgroundColor = "#7F3FBF";
+        }
+        with (item7_3) {
+            style.width = sizePx + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = sizePx * 7 - (-5 * 3) + "px";
+            style.top = sizePx * 6 - (-5) + "px";
+            style.backgroundColor = "#7F3FBF";
+        }
+        with (item8_1) {
+            style.width = sizePx + "px";
+            style.height = sizePx + "px";
+            style.position = "absolute";
+            style.left = sizePx * 7 - (-5 * 3) + "px";
+            style.top = sizePx + "px";
+            style.backgroundColor = "#BF7F3F";
+        }
+        with (item8_2) {
+            style.width = sizePx + "px";
+            style.height = sizePx * 4 + "px";
+            style.position = "absolute";
+            style.left = sizePx * 8 - (-5 * 3) + "px";
+            style.top = "0px";
+            style.backgroundColor = "#BF7F3F";
+        }
+
+        //item监听器
+        for (let i = 0; i < items.length; i++) {
+            with (items[i]) {
+                let distance = -1;
+                onmousedown = function (event) {
+                    whichItemMoving = 0;
+                    switch (i) {
+                        case 16:
+                        case 15:
+                            //8
+                            whichItemMoving++;
+                        case 14:
+                        case 13:
+                        case 12:
+                            //7
+                            whichItemMoving++;
+                        case 11:
+                        case 10:
+                            //6
+                            whichItemMoving++;
+                        case 9:
+                        case 8:
+                            //5
+                            whichItemMoving++;
+                        case 7:
+                            //4
+                            whichItemMoving++;
+                        case 6:
+                        case 5:
+                            //3
+                            whichItemMoving++;
+                        case 4:
+                        case 3:
+                        case 2:
+                            //2
+                            whichItemMoving++;
+                        case 1:
+                        case 0:
+                            //1
+                            whichItemMoving++;
+                    }
+                    isMoving = true;
+                    isMoved = false;
+                    touchX = event.pageX;
+                    touchY = event.pageY;
+                    firstTouchedX = touchX;
+                    firstTouchedY = touchY;
+                };
+                onmousemove = function (event) {
+                    isMoved = true;
+                    movedX = event.pageX;
+                    movedY = event.pageY;
+                    dx = movedX - touchX;
+                    dy = movedY - touchY;
+                    touchX = movedX;
+                    touchY = movedY;
+                    if (isMoving) {
+                        move();
+                    }
+                };
+                onmouseup = function () {
+                    distance = Math.pow(touchX - firstTouchedX, 2) + Math.pow(touchY - firstTouchedY, 2);
+                    isMoving = false;
+                    if (!isMoved || distance < 7.5) {
+                        changeForm()
+                    }
+                }
+                ontouchstart = onmousedown;
+                ontouchmove = onmousemove;
+                ontouchend = onmouseup;
+            }
+        }
+    }
+
+    initialize();
+
+    function move() {
+        switch (whichItemMoving) {
+            case 1:
+                item1_1.style.left = (item1_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item1_1.style.top = (item1_1.style.top.slice(0, -2) - (-dy)) + "px";
+                item1_2.style.left = (item1_2.style.left.slice(0, -2) - (-dx)) + "px";
+                item1_2.style.top = (item1_2.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+            case 2:
+                item2_1.style.left = (item2_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item2_1.style.top = (item2_1.style.top.slice(0, -2) - (-dy)) + "px";
+                item2_2.style.left = (item2_2.style.left.slice(0, -2) - (-dx)) + "px";
+                item2_2.style.top = (item2_2.style.top.slice(0, -2) - (-dy)) + "px";
+                item2_3.style.left = (item2_3.style.left.slice(0, -2) - (-dx)) + "px";
+                item2_3.style.top = (item2_3.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+            case 3:
+                item3_1.style.left = (item3_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item3_1.style.top = (item3_1.style.top.slice(0, -2) - (-dy)) + "px";
+                item3_2.style.left = (item3_2.style.left.slice(0, -2) - (-dx)) + "px";
+                item3_2.style.top = (item3_2.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+            case 4:
+                item4_1.style.left = (item4_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item4_1.style.top = (item4_1.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+            case 5:
+                item5_1.style.left = (item5_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item5_1.style.top = (item5_1.style.top.slice(0, -2) - (-dy)) + "px";
+                item5_2.style.left = (item5_2.style.left.slice(0, -2) - (-dx)) + "px";
+                item5_2.style.top = (item5_2.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+            case 6:
+                item6_1.style.left = (item6_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item6_1.style.top = (item6_1.style.top.slice(0, -2) - (-dy)) + "px";
+                item6_2.style.left = (item6_2.style.left.slice(0, -2) - (-dx)) + "px";
+                item6_2.style.top = (item6_2.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+            case 7:
+                item7_1.style.left = (item7_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item7_1.style.top = (item7_1.style.top.slice(0, -2) - (-dy)) + "px";
+                item7_2.style.left = (item7_2.style.left.slice(0, -2) - (-dx)) + "px";
+                item7_2.style.top = (item7_2.style.top.slice(0, -2) - (-dy)) + "px";
+                item7_3.style.left = (item7_3.style.left.slice(0, -2) - (-dx)) + "px";
+                item7_3.style.top = (item7_3.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+            case 8:
+                item8_1.style.left = (item8_1.style.left.slice(0, -2) - (-dx)) + "px";
+                item8_1.style.top = (item8_1.style.top.slice(0, -2) - (-dy)) + "px";
+                item8_2.style.left = (item8_2.style.left.slice(0, -2) - (-dx)) + "px";
+                item8_2.style.top = (item8_2.style.top.slice(0, -2) - (-dy)) + "px";
+                break;
+        }
+    }
+
+    function changeForm() {
+        switch (whichItemMoving) {
+            case 1:
+                switch (itemForm1) {
+                    case 1:
+                        item1_1.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_1.style.left = (item1_1.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item1_1.style.top = (item1_1.style.top.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        item1_2.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_2.style.top = (item1_2.style.top.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 2:
+                    case 9:
+                        item1_1.style.top = (item1_1.style.top.slice(0, -2) - (sizePx)) + "px";
+                        item1_2.style.top = (item1_2.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 3:
+                    case 8:
+                        item1_1.style.top = (item1_1.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        item1_2.style.top = (item1_2.style.top.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 4:
+                        item1_1.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_1.style.left = (item1_1.style.left.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        item1_1.style.top = (item1_1.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item1_2.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_2.style.left = (item1_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 5:
+                        item1_1.style.left = (item1_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item1_2.style.left = (item1_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 6:
+                    case 11:
+                        item1_1.style.left = (item1_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item1_2.style.left = (item1_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 7:
+                        item1_1.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_1.style.left = (item1_1.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item1_1.style.top = (item1_1.style.top.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        item1_2.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_2.style.top = (item1_2.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 10:
+                        item1_1.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_1.style.left = (item1_1.style.left.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        item1_1.style.top = (item1_1.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item1_2.style.transform = "rotate(" + (90 * itemForm1) + "deg)";
+                        item1_2.style.left = (item1_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 12:
+                        item1_1.style.left = (item1_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item1_2.style.left = (item1_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        itemForm1 = 0;
+                }
+                itemForm1++;
+                break;
+            case 2:
+                switch (itemForm2) {
+                    case 1:
+                        item2_1.style.transform = "rotate(" + (90 * itemForm2) + "deg)";
+                        item2_1.style.left = (item2_1.style.left.slice(0, -2) - (-2 * sizePx)) + "px";
+                        item2_2.style.transform = "rotate(" + (90 * itemForm2) + "deg)";
+                        item2_3.style.transform = "rotate(" + (90 * itemForm2) + "deg)";
+                        item2_3.style.left = (item2_3.style.left.slice(0, -2) - (2 * sizePx)) + "px";
+                        break;
+                    case 2:
+                        item2_1.style.left = (item2_1.style.left.slice(0, -2) - (2 * sizePx)) + "px";
+                        item2_3.style.left = (item2_3.style.left.slice(0, -2) - (-2 * sizePx)) + "px";
+                        break;
+                    case 3:
+                    case 5:
+                        item2_1.style.left = (item2_1.style.left.slice(0, -2) - (-2 * sizePx)) + "px";
+                        item2_3.style.left = (item2_3.style.left.slice(0, -2) - (2 * sizePx)) + "px";
+                        break;
+                    case 4:
+                        item2_1.style.transform = "rotate(" + (90 * itemForm2) + "deg)";
+                        item2_1.style.left = (item2_1.style.left.slice(0, -2) - (2 * sizePx)) + "px";
+                        item2_2.style.transform = "rotate(" + (90 * itemForm2) + "deg)";
+                        item2_3.style.transform = "rotate(" + (90 * itemForm2) + "deg)";
+                        item2_3.style.left = (item2_3.style.left.slice(0, -2) - (-2 * sizePx)) + "px";
+                        break;
+                    case 6:
+                        item2_1.style.left = (item2_1.style.left.slice(0, -2) - (2 * sizePx)) + "px";
+                        item2_3.style.left = (item2_3.style.left.slice(0, -2) - (-2 * sizePx)) + "px";
+                        itemForm2 = 0;
+                }
+                itemForm2++;
+                break;
+            case 3:
+                switch (itemForm3) {
+                    case 1:
+                        item3_1.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_1.style.left = (item3_1.style.left.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        item3_1.style.top = (item3_1.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item3_2.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_2.style.left = (item3_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item3_2.style.top = (item3_2.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 2:
+                        item3_1.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_1.style.left = (item3_1.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item3_1.style.top = (item3_1.style.top.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        item3_2.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_2.style.left = (item3_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item3_2.style.top = (item3_2.style.top.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 3:
+                        item3_1.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_1.style.left = (item3_1.style.left.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        item3_1.style.top = (item3_1.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item3_2.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_2.style.left = (item3_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item3_2.style.top = (item3_2.style.top.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 4:
+                        item3_1.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_1.style.left = (item3_1.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item3_1.style.top = (item3_1.style.top.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        item3_2.style.transform = "rotate(" + (90 * itemForm3) + "deg)";
+                        item3_2.style.left = (item3_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item3_2.style.top = (item3_2.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        itemForm3 = 0;
+                }
+                itemForm3++;
+                break;
+            case 4:
+                switch (itemForm4) {
+                    case 1:
+                        item4_1.style.transform = "rotate(" + (90 * itemForm4) + "deg)";
+                        break;
+                    case 2:
+                        item4_1.style.transform = "rotate(" + (90 * itemForm4) + "deg)";
+                        itemForm4 = 0;
+                }
+                itemForm4++;
+                break;
+            case 5:
+                switch (itemForm5) {
+                    case 1:
+                        item5_1.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_1.style.left = (item5_1.style.left.slice(0, -2) - (-2 * sizePx)) + "px";
+                        item5_1.style.top = (item5_1.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        item5_2.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_2.style.left = (item5_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item5_2.style.top = (item5_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        break;
+                    case 2:
+                    case 9:
+                        item5_1.style.top = (item5_1.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        item5_2.style.top = (item5_2.style.top.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 3:
+                    case 8:
+                        item5_1.style.top = (item5_1.style.top.slice(0, -2) - (sizePx)) + "px";
+                        item5_2.style.top = (item5_2.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 4:
+                        item5_1.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_1.style.left = (item5_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item5_1.style.top = (item5_1.style.top.slice(0, -2) - (-2 * sizePx)) + "px";
+                        item5_2.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_2.style.left = (item5_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item5_2.style.top = (item5_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        break;
+                    case 5:
+                        item5_1.style.left = (item5_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item5_2.style.left = (item5_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 6:
+                    case 11:
+                        item5_1.style.left = (item5_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item5_2.style.left = (item5_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 7:
+                        item5_1.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_1.style.left = (item5_1.style.left.slice(0, -2) - (2 * sizePx)) + "px";
+                        item5_1.style.top = (item5_1.style.top.slice(0, -2) - (sizePx)) + "px";
+                        item5_2.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_2.style.left = (item5_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item5_2.style.top = (item5_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        break;
+                    case 10:
+                        item5_1.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_1.style.left = (item5_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item5_1.style.top = (item5_1.style.top.slice(0, -2) - (2 * sizePx)) + "px";
+                        item5_2.style.transform = "rotate(" + (90 * itemForm5) + "deg)";
+                        item5_2.style.left = (item5_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item5_2.style.top = (item5_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        break;
+                    case 12:
+                        item5_1.style.left = (item5_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item5_2.style.left = (item5_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        itemForm5 = 0;
+                }
+                itemForm5++;
+                break;
+            case 6:
+                switch (itemForm6) {
+                    case 1:
+                        item6_1.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_1.style.left = (item6_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item6_2.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_2.style.left = (item6_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item6_2.style.top = (item6_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        break;
+                    case 2:
+                    case 9:
+                        item6_1.style.top = (item6_1.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        item6_2.style.top = (item6_2.style.top.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 3:
+                    case 8:
+                        item6_1.style.top = (item6_1.style.top.slice(0, -2) - (sizePx)) + "px";
+                        item6_2.style.top = (item6_2.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 4:
+                        item6_1.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_1.style.top = (item6_1.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        item6_2.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_2.style.left = (item6_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item6_2.style.top = (item6_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        break;
+                    case 5:
+                        item6_1.style.left = (item6_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item6_2.style.left = (item6_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 6:
+                    case 11:
+                        item6_1.style.left = (item6_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item6_2.style.left = (item6_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 7:
+                        item6_1.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_1.style.left = (item6_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item6_2.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_2.style.left = (item6_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item6_2.style.top = (item6_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        break;
+                    case 10:
+                        item6_1.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_1.style.top = (item6_1.style.top.slice(0, -2) - (sizePx)) + "px";
+                        item6_2.style.transform = "rotate(" + (90 * itemForm6) + "deg)";
+                        item6_2.style.left = (item6_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item6_2.style.top = (item6_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        break;
+                    case 12:
+                        item6_1.style.left = (item6_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item6_2.style.left = (item6_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        itemForm6 = 0;
+                }
+                itemForm6++;
+                break;
+            case 7:
+                switch (itemForm7) {
+                    case 1:
+                        item7_1.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_1.style.left = (item7_1.style.left.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        item7_1.style.top = (item7_1.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item7_2.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_2.style.left = (item7_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item7_2.style.top = (item7_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item7_3.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_3.style.left = (item7_3.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item7_3.style.top = (item7_3.style.top.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        break;
+                    case 2:
+                        item7_1.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_1.style.left = (item7_1.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item7_1.style.top = (item7_1.style.top.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        item7_2.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_2.style.left = (item7_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item7_2.style.top = (item7_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item7_3.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_3.style.left = (item7_3.style.left.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        item7_3.style.top = (item7_3.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        break;
+                    case 3:
+                        item7_1.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_1.style.left = (item7_1.style.left.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        item7_1.style.top = (item7_1.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item7_2.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_2.style.left = (item7_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item7_2.style.top = (item7_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item7_3.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_3.style.left = (item7_3.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item7_3.style.top = (item7_3.style.top.slice(0, -2) - (-1.5 * sizePx)) + "px";
+                        break;
+                    case 4:
+                        item7_1.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_1.style.left = (item7_1.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item7_1.style.top = (item7_1.style.top.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        item7_2.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_2.style.left = (item7_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item7_2.style.top = (item7_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item7_3.style.transform = "rotate(" + (90 * itemForm7) + "deg)";
+                        item7_3.style.left = (item7_3.style.left.slice(0, -2) - (1.5 * sizePx)) + "px";
+                        item7_3.style.top = (item7_3.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        itemForm7 = 0;
+                }
+                itemForm7++;
+                break;
+            case 8:
+                switch (itemForm8) {
+                    case 1:
+                        item8_1.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_1.style.left = (item8_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item8_2.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_2.style.left = (item8_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item8_2.style.top = (item8_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        break;
+                    case 2:
+                    case 9:
+                        item8_1.style.top = (item8_1.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        item8_2.style.top = (item8_2.style.top.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 3:
+                    case 8:
+                        item8_1.style.top = (item8_1.style.top.slice(0, -2) - (sizePx)) + "px";
+                        item8_2.style.top = (item8_2.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 4:
+                        item8_1.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_1.style.top = (item8_1.style.top.slice(0, -2) - (-sizePx)) + "px";
+                        item8_2.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_2.style.left = (item8_2.style.left.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        item8_2.style.top = (item8_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        break;
+                    case 5:
+                        item8_1.style.left = (item8_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item8_2.style.left = (item8_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        break;
+                    case 6:
+                    case 11:
+                        item8_1.style.left = (item8_1.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        item8_2.style.left = (item8_2.style.left.slice(0, -2) - (sizePx)) + "px";
+                        break;
+                    case 7:
+                        item8_1.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_1.style.left = (item8_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item8_2.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_2.style.left = (item8_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item8_2.style.top = (item8_2.style.top.slice(0, -2) - (0.5 * sizePx)) + "px";
+                        break;
+                    case 10:
+                        item8_1.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_1.style.top = (item8_1.style.top.slice(0, -2) - (sizePx)) + "px";
+                        item8_2.style.transform = "rotate(" + (90 * itemForm8) + "deg)";
+                        item8_2.style.left = (item8_2.style.left.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        item8_2.style.top = (item8_2.style.top.slice(0, -2) - (-0.5 * sizePx)) + "px";
+                        break;
+                    case 12:
+                        item8_1.style.left = (item8_1.style.left.slice(0, -2) - (sizePx)) + "px";
+                        item8_2.style.left = (item8_2.style.left.slice(0, -2) - (-sizePx)) + "px";
+                        itemForm8 = 0;
+                }
+                itemForm8++;
+        }
+    }
+
+</script>
+</body>
+</html>

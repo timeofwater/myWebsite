@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM简介</title>
+    <link rel="stylesheet" href="Note.css" type="text/css"/>
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="navigator">
+    <a id="logo" href="../index.html"></a>
+    <a class="normal" href="../CSS3/index.html">CSS</a>
+    <a class="normal" href="../JavaScript/index.html">JS</a>
+    <a class="normal" href="../PTE/PTE.html">周期表</a>
+    <a class="normal" href="../Goals/tables.php">目标收集</a>
+</div>
+<pre>
+BOM简介:
+    BOM(Browser Object Model)即浏览器对象模型,连接JS与浏览器.
+
+    window
+      |             |---layer       |---textarea
+      |---frame     |---link        |---text
+      |             |---image       |---fileupload
+      |---document--{---area        |---password
+      |             |---anchor      |---hidden
+      |---location  |---applet      |---submit
+      |             |---form - - - -{---reset
+      |---history   |---plugin      |---radio
+      |                             |---checkbox
+      |---navigator-{---plugin      |---button
+                    |---mime type   |---select---option
+
+window:
+    所有Javascript全局对象,函数以及变量均自动成为window对象的成员.
+    window对象代表浏览器窗口, 在JS中可以省略 window. 这个前缀.
+
+    方法:
+    window.alert("提示信息")                    警告框
+    window.confirm("提示信息","默认值")         对话框
+    window.prompt("提示信息","默认值")          可输入对话框
+    window.open(URL,name,features,replace)      打开或查找一个窗口
+    window.close()                              关闭当前窗口
+    window.setTimeout(code,ms)                  在指定毫秒数后执行
+    window.setInterval(code,ms)                 每隔一定毫秒数执行
+
+    属性:
+    window.closed           窗口是否关闭
+    window.opener           返回打开当前窗口的window对象
+    window.defaultstatus    设置和返回窗口状态栏中默认显示的文本
+    window.status           设置和返回当前窗口状态栏文本
+    window.screenTop        返回窗口左上角顶点在屏幕上的垂直位置
+    window.screenLeft       返回窗口左上角顶点在屏幕上的水平位置
+
+document:
+    document对象代表整个浏览器窗口中装载的整个HTML文档
+
+    方法:
+    document.write()        向文档写入
+    document.writeln()      向文档写入并换行
+    document.open(mimetype,replace)
+                            擦除当前HTML文档的内容, 开始一个新的文档, mimetype默认值为text/html
+                            <em>必须接close()</em>
+    document.close()        关闭一个open()打开的输出流并显示选定的数据
+
+    属性:
+    document.title          返回当前文档的标题
+    document.lastModified   返回文档最后被修改的日期和时间
+    document.URL            返回当前文档的URL
+    document.cookie         设置或查询与当前文档相关的所有cookie
+    document.bgColor        定义文档的背景色
+    document.fgColor        定义文档的前景色
+    document.location       保存文档所有的页面地址信息
+    document.alinkColor     定义激活链接的颜色
+    document.linkColor      定义链接的颜色
+    document.vlinkColor     定义已浏览过的链接的颜色
+
+location:
+    由JS runtime engine自动创建, 包含有关当前URL的信息
+    location是window对象的一部分,可以通过window.location访问和改变当前的URL地址
+
+    方法:
+    location.assign(URL)    加载新的文档
+    location.reload(force)  重新加载当前文档
+                            <em>force = true时优先从服务器上重新下载该文档
+                            否则有限加载缓存</em>
+    location.replace(URL)   用新的文档替换当前文档(不能回退到原界面)
+
+    属性:
+    location.protocol       当前URL的协议
+    location.host           主机名称和端口号
+    location.hostname       主机名
+    location.port           端口
+    location.pathname       路径
+    location.hash           锚(#后的URL)
+    location.search         查询部分(?后的URL)
+    location.href           完整的URL
+
+history:
+    由JS runtime engine自动创建, 包含有关用户在一个浏览器窗口内已访问的URL
+    出于各种原因,唯一保持使用的功能只有back(),forward(),go()
+
+    方法:
+    history.back()          加载历史列表的前一个URL
+    history.forward()       加载历史列表的下一个URL
+    history.go(number)      加载相对位置为number的URL
+
+    属性:
+    history.length          返回历史列表中URL的数量(当前:<script>document.write("" + history.length);</script>)
+
+navigator:
+    浏览器信息(navigator)对象包含有关客户端浏览器的信息
+
+    方法:
+    navigator.javaEnabled   规定浏览器是否启用java
+    navigator.taintEnabled  规定浏览器是否启用数据污点
+
+    属性:
+    navigator.appCodeName   返回浏览器代码名
+    navigator.appMinorVersion
+                            返回浏览器次级版本
+    navigator.appName       返回浏览器名称(当前:<script>document.write("" + navigator.appName)</script>)
+    navigator.appVersion    返回浏览器的平台和版本信息
+    navigator.browserLanguage
+                            返回浏览器的语言
+    navigator.cookieEnabled 返回浏览器是否启用cookie
+    navigator.onLine        返回系统是否处于脱机状态
+    navigator.platform      返回浏览器处于的操作系统
+    navigator.systemLanguage返回操作系统使用的默认语言
+    navigator.userAgent     返回由客户机发送服务器的user-agent头
+    navigator.userLanguage  返回操作系统的自然语言设置
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS的创建</title>
+    <link rel="stylesheet" href="Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <style type="text/css">
+        #logo{
+            display: inline-block;
+            float: left;
+            width: 200px;
+            height: 55px;
+            background: url("../pictures/logo.png") no-repeat 0 0;
+        }
+
+        #navigator {
+            position: fixed;
+            top: 0;
+            background: url("../pictures/La.png") repeat-x;
+            width: 100%;
+            height: 55px;
+        }
+
+        #select {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        .normal {
+            display: inline-block;
+            float: left;
+            margin-top: 10px;
+            width: 50px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 12px;
+            color: #a8afbe;
+            text-decoration: none;
+        }
+
+        .normal:hover {
+            background: url("../pictures/s0.png") no-repeat;
+        }
+
+        body{
+            margin: 100px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+<pre>
+    CSS(Cascading Style Sheets),W3C组织制定的一种网页元素设计规则,负责网页内容的表现
+    目前,CSS3规则仍在开发中
+
+    CSS代码在&lt;head&gt;&lt;/head&gt;标签中使用
+    方法:
+        1.内部样式表:&lt;style type="text/css"&gt;&lt;/style&gt;(其中,type属性可以省略)
+        <em>*由于低版本的浏览器不支持内部样式表的&lt;style&gt;标签,所以会输出其中代码,为此可以使用&lt;!----&gt;标签隐藏其中代码</em>
+        2.链入外部样式表:&lt;link rel="stylesheet" href="***.css" type="text/css"&gt;(其中,type属性可以省略)
+        <em>*链入的样式会存在浏览器的缓冲区中</em>
+        3.导入外部样式表:@import url("***.css");(在内部样式表里使用)
+        <em>*导入的样式优先级很低</em>
+        4.内联样式表:&lt;标签 style=""&gt;
+        <em>*一般用于微调</em>
+</pre>
+
+
+<script src="/Js/navigator.js"></script>
+</body>
+</html>

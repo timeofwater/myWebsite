@@ -1,0 +1,248 @@
+.container {
+    display: block;
+    position: relative;
+    top: 100px;
+    width: 200px;
+    height: 100px;
+    margin: 0 auto;
+    background: #24334a;
+}
+
+:root {
+    --start-color: #ffff00;
+    --middle-1-color: #00ff00;
+    --middle-2-color: #00ffff;
+    --middle-3-color: #0000ff;
+    --middle-4-color: #ff00ff;
+    --progress: 0%;
+}
+
+.main {
+    position: relative;
+    top: 25px;
+    left: 50px;
+    width: 100px;
+    height: 50px;
+}
+
+.main::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100px;
+    height: 50px;
+    z-index: 2;
+    background: linear-gradient(90deg,
+    var(--start-color) calc(0% - var(--progress)),
+    var(--middle-1-color) calc(100% - var(--progress)),
+    var(--middle-2-color) calc(200% - var(--progress)),
+    var(--middle-3-color) calc(300% - var(--progress)),
+    var(--middle-4-color) calc(400% - var(--progress)),
+    var(--start-color) calc(500% - var(--progress)),
+    var(--middle-1-color) calc(600% - var(--progress)));
+    animation: turnColor 3s linear;
+}
+
+.main::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    width: 100px;
+    height: 54px;
+    z-index: 2;
+    background: linear-gradient(180deg,
+    var(--start-color) calc(0% - var(--progress)),
+    var(--middle-1-color) calc(100% - var(--progress)),
+    var(--middle-2-color) calc(200% - var(--progress)),
+    var(--middle-3-color) calc(300% - var(--progress)),
+    var(--middle-4-color) calc(400% - var(--progress)),
+    var(--start-color) calc(500% - var(--progress)),
+    var(--middle-1-color) calc(600% - var(--progress)));
+    animation: turnColor 3s linear;
+}
+
+.main2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 50px;
+    z-index: 3;
+}
+
+.main2::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100px;
+    height: 50px;
+    z-index: 4;
+    background: linear-gradient(270deg,
+    var(--start-color) calc(0% - var(--progress)),
+    var(--middle-1-color) calc(100% - var(--progress)),
+    var(--middle-2-color) calc(200% - var(--progress)),
+    var(--middle-3-color) calc(300% - var(--progress)),
+    var(--middle-4-color) calc(400% - var(--progress)),
+    var(--start-color) calc(500% - var(--progress)),
+    var(--middle-1-color) calc(600% - var(--progress)));
+    animation: turnColor 3s linear;
+}
+
+.main2::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100px;
+    height: 54px;
+    z-index: 4;
+    background: linear-gradient(0deg,
+    var(--start-color) calc(0% - var(--progress)),
+    var(--middle-1-color) calc(100% - var(--progress)),
+    var(--middle-2-color) calc(200% - var(--progress)),
+    var(--middle-3-color) calc(300% - var(--progress)),
+    var(--middle-4-color) calc(400% - var(--progress)),
+    var(--start-color) calc(500% - var(--progress)),
+    var(--middle-1-color) calc(600% - var(--progress)));
+    animation: turnColor 3s linear;
+}
+
+.inner {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 50px;
+    z-index: 10;
+    background: #24334a;
+}
+
+@keyframes turnColor {
+    0% {
+        --progress: 0%;
+    }
+    2.5% {
+        --progress: 12.5%;
+    }
+    5% {
+        --progress: 25%;
+    }
+    7.5% {
+        --progress: 37.5%;
+    }
+    10% {
+        --progress: 50%;
+    }
+    12.5% {
+        --progress: 62.5%;
+    }
+    15% {
+        --progress: 75%;
+    }
+    17.5% {
+        --progress: 87.5%;
+    }
+    20% {
+        --progress: 100%;
+    }
+    22.5% {
+        --progress: 112.5%;
+    }
+    25% {
+        --progress: 125%;
+    }
+    27.5% {
+        --progress: 137.5%;
+    }
+    30% {
+        --progress: 150%;
+    }
+    32.5% {
+        --progress: 162.5%;
+    }
+    35% {
+        --progress: 175%;
+    }
+    37.5% {
+        --progress: 187.5%;
+    }
+    40% {
+        --progress: 200%;
+    }
+    42.5% {
+        --progress: 212.5%;
+    }
+    45% {
+        --progress: 225%;
+    }
+    47.5% {
+        --progress: 237.5%;
+    }
+    50% {
+        --progress: 250%;
+    }
+    52.5% {
+        --progress: 262.5%;
+    }
+    55% {
+        --progress: 275%;
+    }
+    57.5% {
+        --progress: 287.5%;
+    }
+    60% {
+        --progress: 300%;
+    }
+    62.5% {
+        --progress: 312.5%;
+    }
+    65% {
+        --progress: 325%;
+    }
+    67.5% {
+        --progress: 337.5%;
+    }
+    70% {
+        --progress: 350%;
+    }
+    72.5% {
+        --progress: 362.5%;
+    }
+    75% {
+        --progress: 375%;
+    }
+    77.5% {
+        --progress: 387.5%;
+    }
+    80% {
+        --progress: 400%;
+    }
+    82.5% {
+        --progress: 412.5%;
+    }
+    85% {
+        --progress: 425%;
+    }
+    87.5% {
+        --progress: 437.5%;
+    }
+    90% {
+        --progress: 450%;
+    }
+    92.5% {
+        --progress: 462.5%;
+    }
+    95% {
+        --progress: 475%;
+    }
+    97.5% {
+        --progress: 487.5%;
+    }
+    100% {
+        --progress: 500%;
+    }
+}

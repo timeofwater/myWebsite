@@ -1,0 +1,38 @@
+
+div, li, ul {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+code{
+    color: #444444;
+    font-size: large;
+}
+
+li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+}
+
+ul {
+    background-color: #eeeeee;
+}
+
+.box {
+    display: block;
+    margin: 50px;
+}
+
+.star {
+    display: block;
+    width: 9px;
+    height: 10px;
+    background: url("../pictures/star.png") no-repeat;
+    cursor: pointer;
+}
+
+.on {
+    background-position: 0 -10px;
+}

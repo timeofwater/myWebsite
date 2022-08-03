@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>面积计算器</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,
+minimun-scale=1.0,maximum-scale=1.0,user-scalable=no">
+</head>
+<body>
+<form action="">
+    <p>
+        长：<input id="lengthText" type="text" name="length">
+        <select id="lengthUnit" name="length_unit">
+            <option class="lengthOption" value="1">千米km</option>
+            <option class="lengthOption" value="2">里</option>
+            <option class="lengthOption" value="3">米m</option>
+            <option class="lengthOption" value="4">分米dm</option>
+            <option class="lengthOption" value="5">厘米cm</option>
+            <option class="lengthOption" value="6">毫米mm</option>
+        </select>
+        <br>
+    </p>
+    <p>
+        宽：<input id="widthText" type="text" name="width">
+        <select id="widthUnit" name="width_unit">
+            <option class="widthOption" value="1">千米km</option>
+            <option class="widthOption" value="2">里</option>
+            <option class="widthOption" value="3">米m</option>
+            <option class="widthOption" value="4">分米dm</option>
+            <option class="widthOption" value="5">厘米cm</option>
+            <option class="widthOption" value="6">毫米mm</option>
+        </select>
+        <br>
+    </p>
+    <p>
+        结果单位：
+        <select id="resultUnit" name="result_unit">
+            <option class="resultOption" value="1">平方千米</option>
+            <option class="resultOption" value="2">平方米</option>
+            <option class="resultOption" value="3">平方分米</option>
+            <option class="resultOption" value="4">平方厘米</option>
+            <option class="resultOption" value="5">平方毫米</option>
+        </select>
+        <input type="submit" value="计算" onclick="cul()">
+    </p>
+    <p id="result">
+        结果：
+    </p>
+</form>
+
+<script>
+    function getAttr() {
+        var total = window.location.search;
+        var index = 0;
+        var length = 0;
+        var lengthUnit = 0;
+        var width = 0;
+        var widthUnit = 0;
+        var isGetting = false;
+        var number = 0;
+        var isDot = false;
+        var dotIndex = 0;
+        for (var i = 0; total[i] !== undefined; i++) {//cul string
+            var char = total[i];
+            if (char === '?') {
+                console.log("cul started.");
+                isGetting = true;
+            } else if (char === '=') {
+                index += 1;
+                number = 0;
+                isDot = false;
+            }
+            if (isGetting === true) {
+                if (char === '.') {
+                    isDot = true;
+                    dotIndex = 0;
+                } else if (char <= '9' && '0' <= char) {
+                    if (isDot === false) {
+                        number *= 10;
+                        number = Number(number) + Number(char);
+                    } else {
+                        dotIndex += 1;
+                        for (var j = 0; j < dotIndex; j++) {
+                            char /= 10;
+                        }
+                        number = Number(number) + Number(char);
+                    }
+                } else if (char === "&") {
+                    switch (index) {
+                        case 1:
+                            length = number;
+                            break;
+                        case 2:
+                            lengthUnit = number;
+                            break;
+                        case 3:
+                            width = number;
+                            break;
+                        case 4:
+                            widthUnit = number;
+                            break;
+                        default:
+                            console.log("except! number:" + number + " index:" + index);
+                    }
+                }
+            }
+        }
+        var domLength = document.getElementById('lengthText');
+        domLength.outerHTML = '<input id="lengthText" type="text" name="length" value="' + length + '">';
+
+        var lengthUnits = [1000, 500, 1, 0.1, 0.01, 0.001];
+        var domLengthUnit = document.getElementsByClassName('lengthOption');
+        for (var i = 0; i < domLengthUnit.length; i++) {
+            domLengthUnit[i].selected = false;
+        }
+        domLengthUnit[lengthUnit - 1].selected = true;
+
+        var domWidth = document.getElementById('widthText');
+        domWidth.outerHTML = '<input id="widthText" type="text" name="width" value="' + width + '">';
+
+        var widthUnits = [1000, 500, 1, 0.1, 0.01, 0.001];
+        var domWidthUnit = document.getElementsByClassName('widthOption');
+        for (var i = 0; i < domWidthUnit.length; i++) {
+            domWidthUnit[i].selected = false;
+        }
+        domWidthUnit[widthUnit - 1].selected = true;
+
+        var resultUnits = [1000, 1, 0.01, 0.0001, 0.000001];
+        var resultUnitName = ["平方千米", "平方米", "平方分米", "平方厘米", "平方毫米"];
+        var resultUnitIndex = total.substr(-1, 1);
+        var domResultUnit = document.getElementsByClassName('resultOption');
+        for (var i = 0; i < domResultUnit.length; i++) {
+            domResultUnit[i].selected = false;
+        }
+        domResultUnit[resultUnitIndex - 1].selected = true;
+
+        var result = length * lengthUnits[lengthUnit - 1] * width * widthUnits[widthUnit - 1] / resultUnits[resultUnitIndex - 1];
+        var domResult = document.getElementById('result');
+        domResult.innerText = "结果：" + result + resultUnitName[resultUnitIndex - 1];
+
+        console.debug("length=" + length + " width=" + width);
+        console.log("cul end.");
+    }
+
+    getAttr();
+
+    function cul() {
+        console.log("calculating");
+    }
+</script>
+</body>
+</html>

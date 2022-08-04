@@ -1,0 +1,38 @@
+.container {
+    display: block;
+    position: relative;
+    top: 100px;
+    width: 200px;
+    height: 60px;
+    margin: 0 auto;
+    background: #24334a;
+}
+
+:root {
+    --char-number: 7;
+}
+
+.ball {
+    position: absolute;
+    width: calc(180px / var(--char-number));
+    height: calc(180px / var(--char-number));
+    top: 0;
+    left: 10px;
+    border-radius: 100%;
+    background: #C71585;
+}
+
+.inner {
+    display: flex;
+    position: absolute;
+    width: 180px;
+    height: 30px;
+    top: 30px;
+    left: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.char {
+    font-size: calc(180px / var(--char-number));
+}

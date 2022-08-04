@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳动加载条</title>
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <link rel="stylesheet" href="5.6.t.css" type="text/css">
+    <style id="loopStyle">
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ball"></div>
+    <div id="in" class="inner"></div>
+</div>
+<script>
+    function initTextAndStyle() {
+        var text = "跳动加载字条~";
+        var array = text.split("");
+        for (var s = 0; s < array.length; s++) {
+            var child = document.createElement("div");
+            child.setAttribute("class", "char");
+            child.setAttribute("style", "animation: sink " + array.length + "s " + (s - 0.5) + "s infinite");
+            child.innerHTML = array[s];
+            document.getElementById("in").appendChild(child);
+        }
+
+        var loopStyle = document.getElementById("loopStyle");
+        loopStyle.innerText += "@keyframes sink {0% {transform: translateY(0);}\n";
+        loopStyle.innerText += "    " + (100 / array.length) + "% {transform: translateY(10px);}\n";
+        loopStyle.innerText += "    " + (100 / array.length * 2) + "% {transform: translateY(0px);}\n";
+        loopStyle.innerText += "    100% {transform: translateY(0px);}}\n";
+        loopStyle.innerText += ".ball {animation: jump " + array.length + "s linear 0s infinite;}";
+        loopStyle.innerText += "\n\n@keyframes jump {\n";
+        for (var i = 0; i < array.length - 1; i++) {
+            loopStyle.innerText += "" + (100 * i / array.length) + "%{\n";
+            loopStyle.innerText += "    transform:  translate(calc(" + i + " * 180px / var(--char-number)), 20px);\n";
+            loopStyle.innerText += "    transition: transform 0.5s;\n";
+            loopStyle.innerText += "}\n";
+
+            loopStyle.innerText += "" + (100 * (2 * i + 1) / array.length / 2) + "%{\n";
+            loopStyle.innerText += "    transform:  translate(calc(" + (i + 1) + " * 180px / var(--char-number)), -20px);\n";
+            loopStyle.innerText += "    transition: transform 0.5s;\n";
+            loopStyle.innerText += "}\n";
+        }
+        loopStyle.innerText += "" + (100 * i / array.length) + "%{\n";
+        loopStyle.innerText += "    transform:  translate(calc(" + (array.length - 1) + " * 180px / var(--char-number)), 20px);\n";
+        loopStyle.innerText += "    transition: transform 0.5s;\n";
+        loopStyle.innerText += "}\n";
+        loopStyle.innerText += "" + (100 * (2 * i + 1) / array.length / 2) + "%{\n";
+        loopStyle.innerText += "    transform:  translate(calc(180px / var(--char-number)), -20px);\n";
+        loopStyle.innerText += "    transition: transform 0.5s;\n";
+        loopStyle.innerText += "}}\n";
+    }
+
+    initTextAndStyle();
+</script>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

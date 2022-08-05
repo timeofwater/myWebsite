@@ -83,7 +83,7 @@
     <!-- script -->
     <script>
         <?echo file_get_contents('../Js/kaoyangoals.js');?>
-
+    
         function setFinished(objectID, animal) {
             if (goalsJson[objectID]["status"] === "unfinished") {
                 goalsJson[objectID]["status"] = "finished";

@@ -1,0 +1,68 @@
+.container {
+    display: block;
+    position: relative;
+    top: 100px;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background: #24334a;
+}
+
+:root {
+    /*
+     rotate < 180deg:
+      --rotate-1: rotate;
+      --rotate-2: 0;
+     rotate > 180deg:
+      --rotate-1: 180deg;
+      --rotate-2: rotate-180;
+    */
+    --rotate-1: 180deg;
+    --rotate-2: 40deg;
+}
+
+.main {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+}
+
+.left,
+.right {
+    position: absolute;
+    width: 100px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.right {
+    left: 100px;
+    transform: rotate(180deg);
+}
+
+.up {
+    width: 100px;
+    height: 200px;
+    overflow: hidden;
+    transform-origin: 100px 100px;
+}
+
+.down {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background: radial-gradient(transparent 55%, #3ec4dc 70%);
+}
+
+.left .up {
+    transform: rotate(calc(180deg - var(--rotate-1)));
+}
+
+.right .up {
+    transform: rotate(calc(180deg - var(--rotate-2)));
+}

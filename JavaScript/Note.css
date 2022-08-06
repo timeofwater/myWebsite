@@ -26,6 +26,7 @@ div.boxText2 {
 }
 
 div.Index {
+    display: block;
     font-size: 30px;
     text-align: center;
     margin: 50px auto;

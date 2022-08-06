@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv=”Pragma”content=”no-cache”>
     <title>考研</title>
     <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
     <link rel="stylesheet" href="../Css/general.css" type="text/css">

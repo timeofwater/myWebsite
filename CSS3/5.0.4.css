@@ -1,0 +1,56 @@
+.container {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    top: calc(50% - 50px);
+    left: calc(50% - 150px);
+    transform: rotate(-20deg);
+    -webkit-box-reflect: below 1px linear-gradient(180deg, transparent, #00000070);
+}
+
+.square {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 100px;
+    background: #34c2e3;
+    box-shadow: 0 0 20px #34c2e3,
+    0 0 50px #34c2e3;
+    transform-origin: 100% 100%;
+    animation: span ease-in-out 2s infinite;
+}
+
+@keyframes span {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    40% {
+        transform: rotate(90deg);
+    }
+
+    46% {
+        transform: rotate(85deg);
+    }
+
+    50% {
+        transform: rotate(90deg);
+    }
+
+    54% {
+        transform: rotate(88deg);
+    }
+
+    56% {
+        transform: rotate(90deg);
+    }
+
+    70% {
+        transform: rotate(90deg);
+    }
+
+    100% {
+        transform: translateX(-100px) rotate(90deg);
+    }
+}

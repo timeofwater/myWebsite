@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+
+
+    jQuery 选择器基于元素的 id、类、类型、属性、属性值等"查找"（或选择）HTML 元素。
+    它基于已经存在的 CSS 选择器，除此之外，它还有一些自定义的选择器。
+
+
+    jQuery 中所有选择器都以美元符号开头：$()。
+
+
+    示例：
+    <code>$(document).ready(function(){
+        $("button").click(function(){
+            $("p").hide();
+        });
+    });</code>
+
+    <button>&lt;button&gt;</button>
+    <p>    &lt;p&gt;p元素&lt;/p&gt;</p>
+
+
+    #id 选择器
+
+
+    示例：
+    <code>$(document).ready(function(){
+        $("#b").click(function(){
+            $("h3").hide();
+        });
+    });</code>
+
+    <button id="b">&lt;button id="b"&gt;</button>
+    <h3>    &lt;h3&gt;h3元素&lt;/h3&gt;</h3>
+
+
+    .class 选择器
+
+
+    示例：
+    <code>$(document).ready(function(){
+        $(".butt").click(function(){
+            $("h4").hide();
+        });
+    });</code>
+
+    <button class="butt">&lt;button class="butt"&gt;</button>
+    <h4>    &lt;h4&gt;h4元素&lt;/h4&gt;</h4>
+
+
+    this 选择器
+
+
+    示例：
+    <code>$(document).ready(function(){
+        $("li").click(function(){
+            $(this).hide();
+        });
+    });</code>
+
+    <li>&lt;li&gt;</li>
+
+
+    子元素 选择器
+
+
+    示例：
+    <code>$(document).ready(function(){
+        $("div span").click(function(){
+            $(this).hide();
+        });
+    });</code>
+
+    <span>&lt;span&gt;<div>&lt;div&gt;</div>&lt;/span&gt;</span>
+
+
+    :first 和 :first-child 选择器
+    div span:first 表示第一个div里的第一个span元素
+    div span:first-child 表示每一个div里的第一个span元素
+
+
+    示例：
+    <code>$(document).ready(function(){
+        $(".ex1 div").click(function () {
+            $(".ex1 div:first").hide();
+        });
+    });</code>
+    <code>$(document).ready(function(){
+        $(".ex2 div").click(function () {
+            $(".ex2 div:first-child").hide();
+        });
+    });</code>
+
+    <span class="ex1">&lt;span class="ex1"&gt;<div>&lt;div1&gt;</div><div>&lt;div2&gt;</div>&lt;/span&gt;</span>
+    <span class="ex1">&lt;span class="ex1"&gt;<div>&lt;div1&gt;</div><div>&lt;div2&gt;</div>&lt;/span&gt;</span>
+
+    <span class="ex2">&lt;span class="ex2"&gt;<div>&lt;div1&gt;</div><div>&lt;div2&gt;</div>&lt;/span&gt;</span>
+    <span class="ex2">&lt;span class="ex2"&gt;<div>&lt;div1&gt;</div><div>&lt;div2&gt;</div>&lt;/span&gt;</span>
+
+
+    [属性] 选择器
+
+
+    示例1：
+    <code>$(document).ready(function(){
+        $("[href]").click(function(){
+            $(this).hide();
+        });
+    });</code>
+
+    <a id="a1" href="#a1">&lt;a id="a1" href="#a1"&gt;</a>
+
+    <code>$(document).ready(function(){
+        $("a[href='#a2']").click(function(){
+            $(this).hide();
+        });
+    });</code>
+
+    <a id="a2" href="#a2">&lt;a id="a2" href="#a2"&gt;</a>
+
+
+</pre>
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            $("p").hide();
+        });
+        $("#b").click(function () {
+            $("h3").hide();
+        });
+        $(".butt").click(function () {
+            $("h4").hide();
+        });
+        $("li").click(function () {
+            $(this).hide();
+        });
+        $("span div").click(function () {
+            $(this).hide();
+        });
+        $(".ex1 div").click(function () {
+            $(".ex1 div:first").hide();
+        });
+        $(".ex2 div").click(function () {
+            $(".ex2 div:first-child").hide();
+        });
+        $("[href]").click(function () {
+            $(this).hide();
+        });
+        $("a[href='#a2']").click(function(){
+            $(this).hide();
+        });
+    });
+</script>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

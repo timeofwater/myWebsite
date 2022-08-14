@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加删除元素</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+
+
+    .append()
+    .prepend()
+    .before()
+    .after()
+    在被选元素内的结尾插入内容
+    在被选元素内的开头插入内容
+    在被选元素之后插入内容
+    在被选元素之前插入内容
+
+
+    示例：
+    $("#ex1").text("&lt;span id=\"ex1\"&gt;");
+    $("#ex1").click(function () {
+        $(this).append("&lt;div&gt;&lt;/div&gt;");
+        $(this).after("&lt;span&gt;&lt;/span&gt;");
+    });
+
+    <a id="ex1"></a>
+
+
+    .remove()
+    .remove(selection)
+    .empty()
+    删除元素及子元素
+    删除所选元素
+    删除子元素
+
+
+    示例：
+    $("div").click(function () {
+        $("div").remove("#ex2");
+    });
+
+    <div id="ex2">&lt;div id="ex2"&gt;</div>
+    <div>&lt;div&gt;</div>
+    <div>&lt;div&gt;</div>
+    <div>&lt;div&gt;</div>
+
+
+</pre>
+
+<script>
+    $(document).ready(function () {
+        $("#ex1").text("<span id=\"ex1\">");
+        $("#ex1").click(function () {
+            $(this).append("<div></div>");
+            $(this).after("<span></span>");
+            $("#ex1").text("<span id=\"ex1\">\n        <div></div>\n    </span>\n    <span></span>");
+        });
+        $("div").click(function () {
+            $("div").remove("#ex2");
+        });
+    });
+</script>
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

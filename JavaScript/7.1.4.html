@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作DOM</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+
+
+    .text()
+    .text(callback)
+    .html()
+    .html(callback)
+    .val()
+    .val(callback)
+    .attr()
+    .attr(attr,content)
+    .attr(attr,callback)
+    .prop()
+    .prop(attr,content)
+    .prop(attr,callback)
+
+
+    js:
+    .innerText
+    jQuery:
+    .text()
+
+    js:
+    .innerHtml
+    jQuery:
+    .html()
+
+
+    .attr() 与 .prop():
+    prop()函数的结果:
+        1.如果有相应的属性，返回指定属性值。
+        2.如果没有相应的属性，返回值是空字符串。
+
+    attr()函数的结果:
+        1.如果有相应的属性，返回指定属性值。
+        2.如果没有相应的属性，返回值是 undefined。
+
+    对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。
+    对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法，如action。
+
+
+    示例：
+    $("#ex1").click(function(){
+        $(this).attr("href", function(i,origValue){
+            return "ex2";
+        });
+    });
+
+    <a id="ex1" href="#ex1">&lt;a id="ex1" href="#ex1"&gt;</a>
+
+
+</pre>
+<script>
+    $(document).ready(function () {
+        $("#ex1").click(function () {
+            $(this).attr("href", function (i, origValue) {
+                return "#ex2";
+            });
+            $(this).text("<a id=\"ex1\" href=\"#ex2\">");
+        });
+    });
+</script>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+</head>
+<body>
+<pre>
+
+
+    在 jQuery 中，大多数 DOM 事件都有一个等效的 jQuery 方法。
+    链允许一条语句运行多个jQuery方法：
+    $(...).slideDown().slidUp()
+
+
+    .click()
+    .dblclick()
+    .mouseenter()
+    .mouseleave()
+    .hover()
+    .keypress()
+    .keydown()
+    .keyup()
+    .submit()
+    .change()
+    .focus()
+    .blur()
+    .load()
+    .resize()
+    .scroll()
+    .unload()
+
+    .hide()
+    .hide(speed,callback)
+    .show()
+    .show(speed,callback)
+    .toggle()
+    .toggle(speed,callback)
+    隐藏
+    显示
+    隐藏/显示
+
+    .fadeIn()
+    .fadeIn(speed,callback)
+    .fadeOut()
+    .fadeOut(speed,callback)
+    .fadeToggle()
+    .fadeToggle(speed,callback)
+    .fadeTo(speed)
+    .fadeTo(speed,opacity,callback)
+    淡入
+    淡出
+    淡入/淡出
+    渐变至opacity
+    <em>fadeTo必须加speed参数(slow, fast, number)</em>
+
+    .slideDown()
+    .slideDown(speed,callback)
+    .slideUp()
+    .slideUp(speed,callback)
+    .slideToggle()
+    .slideToggle(speed,callback)
+    下滑
+    上滑
+    上滑/下滑
+
+    .animate({params})
+    .animate({params},speed,callback)
+    .stop()
+    .stop(isStopAll,isGoToEnd)
+    动画
+    允许使用 += 、 -=
+    允许使用 show 、 hide 、 toggle 作为属性值
+    允许使用多条语句：使用,隔开
+    在使用多个.animate函数时会逐一生效
+    isStopAll: 是否全部停止
+    isGoToEnd: 是否直接完成动画
+
+    <em>默认情况下，所有 HTML 元素都有一个静态位置，且无法移动。</em>
+    <em>如需对位置进行操作，要记得首先把元素的 CSS position 属性设置为 relative、fixed 或 absolute</em>
+
+    <em>可以用 animate() 方法来操作所有 CSS 属性吗？</em>
+    <em>答:</em>
+    <em>色彩动画并不包含在核心 jQuery 库中。</em>
+    <em>必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left</em>
+
+
+</pre>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

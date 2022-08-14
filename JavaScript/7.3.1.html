@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+    AJAX(Asynchronous JavaScript and XML)，异步javaScript和XML。
+    在不重载整个网页的情况下，AJAX 通过后台加载数据，并在网页上进行显示。
+
+    .load(URL)
+    .load(URL,data,callback)
+    $.get(URL)
+    $.get(URL,data,callback,dataType)
+    $.post(URL)
+    $.post(URL,data,callback,dataType)
+    从服务器加载数据，并把返回的数据放入被选元素中。
+    可选的 data 参数规定与请求一同发送的查询字符串键/值对集合。
+    可选的 callback 参数是 load() 方法完成后所执行的函数名称。
+    callback(response,status,object) 三个可选参数：返回、状态、XMLHttpRequest对象
+    可选的 dataType 参数是从服务器返回的数据类型。
+
+
+    示例：
+    &lt;?php
+        echo $_POST["content"];
+    ?&gt;
+
+    $("span").click(function () {
+        $("span").post("7.3.1.php",
+            {
+                "content": "测试测试"
+            },
+            function (response) {
+                $("span").after("<span>" + response + "</span>")
+            }
+        );
+    });
+
+    <span>&lt;span&gt;</span>
+</pre>
+<script>
+    $(document).ready(function () {
+        $("span").click(function () {
+            $.post("7.3.1.php",
+                {
+                    "content": "测试测试"
+                },
+                function (response) {
+                    $("span").after("<span>" + response + "</span>")
+                }
+            );
+        });
+    });
+</script>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

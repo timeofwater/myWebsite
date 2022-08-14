@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素宽高</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+    <style>
+        #ex1 {
+            margin: 10px;
+            border: 5px;
+            padding: 10px;
+            width: 10px;
+            height: 10px;
+            background: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<pre>
+
+
+    .width()
+    .height()
+    宽
+    高
+    .innerWidth()
+    .innerHeight()
+    宽+padding
+    高+padding
+    .outerWidth()
+    .outerWidth(isContainMargin)
+    .outerHeight()
+    .outerHeight(isContainMargin)
+    宽+padding+border(+margin)
+    高+padding+border(+margin)
+    <em>设置box-sizing时有特殊取值：</em>
+    <em>box-sizing: content-box  正常</em>
+    <em>box-sizing: border-box   所有值减去二倍(padding+border)</em>
+
+
+    示例：
+
+
+    <div id="ex1"></div>
+
+
+</pre>
+<script>
+    $(document).ready(function () {
+        var div = $("#ex1");
+        var w1 = div.width();
+        var w2 = div.innerWidth();
+        var w3 = div.outerWidth();
+        var w4 = div.outerWidth(true);
+        div.after("<span> " + w4 + "px</span>")
+            .after("<span> " + w3 + "px</span>")
+            .after("<span> " + w2 + "px</span>")
+            .after("<br/><span> " + w1 + "px</span>");
+    });
+</script>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

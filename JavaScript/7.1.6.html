@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类和样式属性</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<pre>
+
+
+    .addClass(string)
+    .removeClass(string)
+    .toggleClass(string)
+    添加类
+    删除类
+    添加/删除类
+    <em>用空格隔开</em>
+
+
+    示例：
+    $("div").click(function () {
+        $("div").toggleClass("red blue");
+    });
+
+    <div class="blue">&lt;div&gt;</div>
+    <div class="red">&lt;div&gt;</div>
+
+
+    .css(name)
+    .css(name,value)
+    .css({name:value, ...})
+    获取css属性
+    设置css属性
+    设置css属性
+
+
+    示例：
+    $("span").click(function (){
+        $("span").css({"margin": "10px","color": "red"});
+    });
+
+    <span>&lt;span&gt;</span>
+    <span>&lt;span&gt;</span>
+
+
+</pre>
+<script>
+    $(document).ready(function () {
+        $("div").click(function () {
+            $("div").toggleClass("red blue");
+        });
+        $("span").click(function () {
+            $("span").css({"margin": "10px", "color": "red"});
+        });
+    });
+</script>
+
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

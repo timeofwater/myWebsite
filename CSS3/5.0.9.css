@@ -1,0 +1,65 @@
+.container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+}
+
+.main {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 0;
+    left: 0;
+    background: #000;
+    overflow: hidden;
+    z-index: 1;
+    animation: span-out 8s linear infinite;
+}
+
+.main::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 10px;
+    left: 10px;
+    background: #4900ff;
+    box-shadow: 0 0 10px #3e8e05;
+    z-index: 2;
+}
+
+.sub {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 10px;
+    transform-origin: 50% 600%;
+    background: #fff;
+    box-shadow: 0 0 10px #eeeeee;
+    animation: span 4s linear infinite;
+    animation-delay: calc(var(--i) * -1s);
+    z-index: 1;
+}
+
+@keyframes span-out {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes span {
+    0% {
+        transform: rotate(calc(var(--i) * -90deg)) translateX(-120px);
+    }
+
+    100% {
+        transform: rotate(calc(var(--i) * -90deg)) translateX(340px);
+    }
+}

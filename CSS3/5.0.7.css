@@ -1,0 +1,52 @@
+.container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+}
+
+.container {
+    filter: url(#filter);
+}
+
+/*svg {*/
+/*    width: 0;*/
+/*    height: 0;*/
+/*}*/
+
+.sub {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(45deg * var(--i)));
+}
+
+.sub::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc((100% - 30px) / 2);
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, #c7eeff, #03a9f4);
+    border-radius: 100%;
+    box-shadow: 0 0 30px #00bcd4;
+}
+
+.r {
+    animation: flow 4s ease-in-out infinite;
+    animation-delay: calc(-0.2s * var(--j));
+}
+
+@keyframes flow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,44 @@
+.container {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+}
+
+.main {
+    position: absolute;
+    width: 200px;
+    height: 2px;
+    top: 0;
+    left: 0;
+    background: #c7eeff;
+    animation: move 2.5s ease-out infinite;
+}
+
+@keyframes move {
+    0% {
+        left: 0px;
+        width: 0px;
+    }
+
+    15%{
+        left: 20px;
+        width: 180px;
+    }
+
+    50% {
+        left: 200px;
+        width: 20px;
+    }
+
+    65%{
+        left: 20px;
+        width: 180px;
+    }
+
+    100% {
+        left: 0px;
+        width: 20px;
+    }
+}

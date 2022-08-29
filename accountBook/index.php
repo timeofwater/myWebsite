@@ -126,7 +126,7 @@
             var dayDiv = document.getElementById("day");
             var monthDiv = document.getElementById("month");
             var todaysNames = Object.getOwnPropertyNames(days[today]);
-            var monthsNames = Object.getOwnPropertyNames(months);
+            var monthsNames = Object.getOwnPropertyNames(months[tomonth]);
             var daysNames = Object.getOwnPropertyNames(days);
             var dayMoney = 0;
             var monthMoney = 0;

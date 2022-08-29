@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>记账</title>
-    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="shortcut icon" href="pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="Css/general.css" type="text/css">
     <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
     <style>
         body {

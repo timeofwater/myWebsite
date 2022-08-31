@@ -133,7 +133,7 @@
     $(document).ready(function () {
         $("#start").click(function () {
             var interval = window.setInterval(function () {
-                if (time >= 10) {
+                if (time >= 0) {
                     changeNum(time);
                     time -= 1;
                     console.log("time:" + time);

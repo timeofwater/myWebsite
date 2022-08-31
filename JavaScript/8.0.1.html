@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时显示</title>
+    <link rel="stylesheet" href="../Css/Note.css" type="text/css">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+    <style>
+        .container {
+            display: block;
+            position: relative;
+            top: 30px;
+            width: 220px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .ten,
+        .one {
+            position: relative;
+            width: 100px;
+            height: 200px;
+        }
+
+        .one {
+            left: 20px;
+        }
+
+        .horizontal,
+        .vertical {
+            position: absolute;
+            width: 90px;
+            height: 10px;
+            border-radius: 10%;
+        }
+
+        .vertical {
+            transform-origin: 0 100%;
+            transform: rotate(90deg);
+        }
+
+        .horizontal-1 {
+            top: 0;
+        }
+
+        .horizontal-2 {
+            /*旋转后加10px*/
+            top: 0;
+        }
+
+        .horizontal-3 {
+            top: 100px;
+        }
+
+        .horizontal-4 {
+            /*旋转后加10px*/
+            top: 100px;
+        }
+
+        .horizontal-5 {
+            top: 200px;
+        }
+
+        .vertical-1 {
+            left: 0;
+        }
+
+        .vertical-2 {
+            left: 10px;
+        }
+
+        .vertical-3 {
+            left: 100px;
+        }
+
+        .color-mode-0 {
+            background: #4c4c4e;
+        }
+
+        .color-mode-1 {
+            background: #0caa0c;
+        }
+
+        .color-mode-2 {
+            background: #b30a2c;
+        }
+
+        #start {
+            position: relative;
+            top: 20px;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="ten">
+        <div id="ten-1" class="horizontal horizontal-1 vertical-2 color-mode-0"></div>
+        <div id="ten-2" class="vertical horizontal-2 vertical-1 color-mode-0"></div>
+        <div id="ten-3" class="vertical horizontal-2 vertical-3 color-mode-0"></div>
+        <div id="ten-4" class="horizontal horizontal-3 vertical-2 color-mode-0"></div>
+        <div id="ten-5" class="vertical horizontal-4 vertical-1 color-mode-0"></div>
+        <div id="ten-6" class="vertical horizontal-4 vertical-3 color-mode-0"></div>
+        <div id="ten-7" class="horizontal horizontal-5 vertical-2 color-mode-0"></div>
+    </div>
+    <div class="one">
+        <div id="one-1" class="horizontal horizontal-1 vertical-2 color-mode-0"></div>
+        <div id="one-2" class="vertical horizontal-2 vertical-1 color-mode-0"></div>
+        <div id="one-3" class="vertical horizontal-2 vertical-3 color-mode-0"></div>
+        <div id="one-4" class="horizontal horizontal-3 vertical-2 color-mode-0"></div>
+        <div id="one-5" class="vertical horizontal-4 vertical-1 color-mode-0"></div>
+        <div id="one-6" class="vertical horizontal-4 vertical-3 color-mode-0"></div>
+        <div id="one-7" class="horizontal horizontal-5 vertical-2 color-mode-0"></div>
+    </div>
+    <button id="start">start</button>
+</div>
+
+<script>
+    var oneNumbers = [0b1110111, 0b0010010, 0b1011101, 0b1011011, 0b0111010, 0b1101011, 0b1101111, 0b1010010, 0b1111111, 0b1111011];
+    var tenNumbers = [0b0000000, 0b0010010, 0b1011101, 0b1011011, 0b0111010, 0b1101011, 0b1101111, 0b1010010, 0b1111111, 0b1111011];
+    var time = 20;
+    var tens = [];
+    var ones = [];
+    for (var i = 1; i < 8; i++) {
+        tens.push($("#ten-" + i));
+        ones.push($("#one-" + i));
+    }
+
+    $(document).ready(function () {
+        $("#start").click(function () {
+            var interval = window.setInterval(function () {
+                if (time >= 10) {
+                    changeNum(time);
+                    time -= 1;
+                    console.log("time:" + time);
+                } else {
+                    clearInterval(interval);
+                }
+            }, 1000);
+
+        })
+    });
+
+    function changeNum(time) {
+        var oneTime = time % 10;
+        var tenTime = Math.floor(time / 10);
+        var oneNumber = oneNumbers[oneTime];
+        var tenNumber = tenNumbers[tenTime];
+        if (time <= 10) {
+            for (var i = 7; i > 0; i--) {
+                if ((tenNumber & 1) === 1) {
+                    var aDiv = $("#ten-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-2");
+                    console.log(tenNumber);
+                } else {
+                    var aDiv = $("#ten-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-0");
+                    console.log(tenNumber);
+                }
+                if ((oneNumber & 1) === 1) {
+                    var aDiv = $("#one-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-2");
+                } else {
+                    var aDiv = $("#one-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-0");
+                }
+                tenNumber >>>= 1;
+                oneNumber >>>= 1;
+            }
+        } else if (time > 10 && time < 100) {
+            for (var i = 7; i > 0; i--) {
+                if ((tenNumber & 1) === 1) {
+                    var aDiv = $("#ten-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-1");
+                    console.log(tenNumber);
+                } else {
+                    var aDiv = $("#ten-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-0");
+                    console.log(tenNumber);
+                }
+                if ((oneNumber & 1) === 1) {
+                    var aDiv = $("#one-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-1");
+                } else {
+                    var aDiv = $("#one-" + i);
+                    aDiv.removeClass("color-mode-0");
+                    aDiv.removeClass("color-mode-1");
+                    aDiv.removeClass("color-mode-2");
+                    aDiv.addClass("color-mode-0");
+                }
+                tenNumber >>>= 1;
+                oneNumber >>>= 1;
+            }
+        }
+    }
+</script>
+<script src="../Js/navigator.js"></script>
+</body>
+</html>

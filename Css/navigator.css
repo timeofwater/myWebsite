@@ -6,15 +6,19 @@
     background: #000000;
 }
 
-#logo {
+#logo-navigator {
     display: inline-block;
     float: left;
     width: 200px;
     height: 55px;
-    background: url("../pictures/logo.png") no-repeat 0 0;
+    background: url("../pictures/logo.png") no-repeat;
 }
 
-.normal {
+.container-navigator {
+    width: calc(100vw - 200px);
+}
+
+.normal-navigator {
     display: inline-block;
     float: left;
     width: 50px;
@@ -27,7 +31,7 @@
     background: url("../pictures/La.png");
 }
 
-.normal:hover{
+.normal-navigator:hover {
     background: url("../pictures/p3.png");
     transform: scale(1.15);
     transition: 0.15s;

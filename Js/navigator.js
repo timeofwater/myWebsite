@@ -11,15 +11,19 @@ var index_tags_addresses = ["//zmbunny.com/CSS3/index.html", "//zmbunny.com/Java
     bodyTag.insertBefore(navigatorDiv,bodyTag.firstElementChild);
 
     var logoAnchor = document.createElement("a");
-    logoAnchor.setAttribute("id", "logo");
+    logoAnchor.setAttribute("id", "logo-navigator");
     logoAnchor.setAttribute("href", "//zmbunny.com/index.html");
     navigatorDiv.appendChild(logoAnchor);
 
+    var anchorContainer = document.createElement("div");
+    anchorContainer.setAttribute("class","container-navigator");
+    navigatorDiv.appendChild(anchorContainer);
+
     for (var i = 0; i < index_tags_addresses.length; i++) {
         var anchor = document.createElement("a");
-        anchor.setAttribute("class", "normal");
+        anchor.setAttribute("class", "normal-navigator");
         anchor.setAttribute("href", index_tags_addresses[i]);
         anchor.innerHTML = index_tags_names_in_short[i];
-        navigatorDiv.appendChild(anchor);
+        anchorContainer.appendChild(anchor);
     }
 }();

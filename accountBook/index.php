@@ -115,14 +115,39 @@
         var today = (timeToday.getMonth() + 1) + "-" + timeToday.getDate();
         var tomonth = timeToday.getMonth() + 1;
 
-        var jsonFile;
+        var jsonFile = null;
         <?php
+        $today = date('n-j');
+        $tomonth = date('n');
+
         $jsonFile = file_get_contents('../Js/accountBook.json');
-        echo 'jsonFile = ' . $jsonFile . ';';
+        $jsonFile = mb_convert_encoding($jsonFile, "UTF-8", "GBK");
+        $jsonFile = str_replace(' ', '', $jsonFile);
+        $jsonFile = str_replace("\n", '', $jsonFile);
+        $jsonFile = str_replace("\r", '', $jsonFile);
+        $json = json_decode($jsonFile, true);
+        $days = $json['days'];
+        $months = $json['months'];
+        $daysInThisMonth = array($today => array('item-1' => array('a' => '0', 'info' => 'null')));
+        $monthsInThisMonth = array($tomonth => array('item-1' => array('a' => '0', 'info' => 'null')));
+
+        foreach ($days as $i => $v) {
+            if (substr($i, 0, strpos($today, '-')) === $tomonth) {
+                $daysInThisMonth[$i] = $days[$i];
+            }
+        }
+
+        foreach ($months as $i => $v) {
+            if ($i === $tomonth) {
+                $monthsInThisMonth[$i] = $months[$i];
+            }
+        }
+
+        echo 'jsonFile = ' . json_encode(array('days' => $daysInThisMonth, 'months' => $monthsInThisMonth)) . ';';
         ?>
         if (typeof (jsonFile) != null) {
-            var days = jsonFile['days'];
-            var months = jsonFile['months'];
+            var days = jsonFile["days"];
+            var months = jsonFile["months"];
             var dayDiv = document.getElementById("day");
             var monthDiv = document.getElementById("month");
             var todaysNames = Object.getOwnPropertyNames(days[today]);
@@ -137,7 +162,9 @@
             for (var i = 1; i < todaysNames.length + 1; i++) {
                 var newDiv = document.createElement("div");
                 newDiv.setAttribute("class", "display-acc");
-                newDiv.innerText = days[today]["item-" + i]["a"] + ", " + days[today]["item-" + i]["info"];
+                if (days[today]["item-" + i]["a"] !== "0") {
+                    newDiv.innerText = days[today]["item-" + i]["a"] + ", " + days[today]["item-" + i]["info"];
+                }
                 dayDiv.appendChild(newDiv);
                 dayMoney += parseFloat(days[today]["item-" + i]["a"]);
                 console.log(days[today]["item-" + i]);
@@ -145,7 +172,9 @@
             for (var i = 1; i < monthsNames.length + 1; i++) {
                 var newDiv = document.createElement("div");
                 newDiv.setAttribute("class", "display-acc");
-                newDiv.innerText = months[tomonth]["item-" + i]["a"] + ", " + months[tomonth]["item-" + i]["info"];
+                if (months[tomonth]["item-" + i]["a"] !== "0") {
+                    newDiv.innerText = months[tomonth]["item-" + i]["a"] + ", " + months[tomonth]["item-" + i]["info"];
+                }
                 monthDiv.appendChild(newDiv);
                 monthMoney += parseFloat(months[tomonth]["item-" + i]["a"]);
                 console.log(months[tomonth]["item-" + i]);

@@ -16,6 +16,13 @@
 
 .container-navigator {
     width: calc(100vw - 200px);
+    height: 55px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.container-navigator::-webkit-scrollbar{
+    display: none;
 }
 
 .normal-navigator {
@@ -33,6 +40,6 @@
 
 .normal-navigator:hover {
     background: url("../pictures/p3.png");
-    transform: scale(1.15);
+    transform: scale(1.01);
     transition: 0.15s;
 }

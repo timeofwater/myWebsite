@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
     <link rel="stylesheet" href="../Css/general.css" type="text/css">
     <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <link rel="stylesheet" href="../Css/cute-calender.css" type="text/css">
     <style>
         body {
             color: #a8afbe;
@@ -17,13 +18,9 @@
             display: block;
             position: relative;
             top: 30px;
-            width: 60px;
-            height: 30px;
+            width: 200px;
+            height: 300px;
             margin: 0 auto;
-            line-height: 2rem;
-            text-align: center;
-            border-radius: 20%;
-            border: 1px solid #0fd293;
         }
 
         .form {
@@ -199,11 +196,16 @@
 <script>
     !function formDiy() {
         var timeToday = new Date();
-        var timeDiv = document.getElementById("time");
         var today = (timeToday.getMonth() + 1) + "-" + timeToday.getDate();
         var dateForm = document.getElementById("date");
-        timeDiv.innerText = today;
         dateForm.setAttribute("value", today);
+    }();
+</script>
+<script src="../Js/cute-calendar.js"></script>
+<script>
+    !function (){
+        var timeDiv = document.getElementById("time");
+        timeDiv.appendChild(genCuteCalendar(new Date()));
     }();
 </script>
 <script src="../Js/navigator.js"></script>

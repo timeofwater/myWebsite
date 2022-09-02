@@ -1,0 +1,66 @@
+.cute-calendar {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    font-size: 13px;
+    background: url("../pictures/background_dusk2.jpg") no-repeat;
+    background-size: 100% 100%;
+    color: #1d263b;
+}
+
+.cute-calendar-table {
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+}
+
+.cute-calendar-tr {
+    position: relative;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+    white-space: nowrap;
+}
+
+.cute-calendar-th {
+    width: 20px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.time-th {
+    width: 140px;
+    height: 25px;
+    font-size: 16px;
+    text-align: start;
+    padding: 0 0 0 5px;
+}
+
+.buttons-th {
+    width: 30px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.day-off {
+    color: #2833fc;
+}
+
+.week-th {
+    font-size: 16px;
+    font-weight: bold;
+    color: #C71585;
+}
+
+.cute-calendar-td {
+    width: 20px;
+    height: 25px;
+    text-align: center;
+}
+
+.this-day {
+    border: 1px solid;
+    border-radius: 10%;
+}

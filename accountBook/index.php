@@ -137,7 +137,7 @@
         }
 
         foreach ($months as $i => $v) {
-            if ($i === $tomonth) {
+            if ('' . $i === $tomonth) {
                 $monthsInThisMonth[$i] = $months[$i];
             }
         }
@@ -203,7 +203,7 @@
 </script>
 <script src="../Js/cute-calendar.js"></script>
 <script>
-    !function (){
+    !function () {
         var timeDiv = document.getElementById("time");
         timeDiv.appendChild(genCuteCalendar(new Date()));
     }();

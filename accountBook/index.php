@@ -79,7 +79,7 @@
 </head>
 <body>
 <div id="time"></div>
-<form class="form" action="handler.php" method="post" target="#">
+<form class="form" action="handler.php" method="post" target="_self">
     <div class="line">
         <div class="text-info">金额：</div>
         <input name="acc" type="text"/>

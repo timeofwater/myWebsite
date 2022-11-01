@@ -29,6 +29,7 @@ if (($newAcc != null && $newType != null) && ($newType != null && $today != null
             $todaysDayItems[$itemName] = $item;
         }
         $days[$today] = $todaysDayItems;
+        header('Location: index.php');
     }
 
     if ($newType == 'month') {
@@ -43,6 +44,7 @@ if (($newAcc != null && $newType != null) && ($newType != null && $today != null
             $todaysMonthItems[$itemName] = $item;
         }
         $months[$tomonth] = $todaysMonthItems;
+        header('Location: index.php');
     }
     $json['days'] = $days;
     $json['months'] = $months;

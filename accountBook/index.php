@@ -112,6 +112,7 @@
 
         var timeToday = new Date();
         var today = (timeToday.getMonth() + 1) + "-" + timeToday.getDate();
+        var daysInMonth = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         var tomonth = timeToday.getMonth() + 1;
 
         var jsonFile = null;
@@ -186,10 +187,10 @@
             }
 
             totalMoney += monthMoney;
-            monthMoney += dayMoney * 30;
+            monthMoney += dayMoney * (daysInMonth[tomonth - 1] - timeToday.getDate());
             dayTotalDiv.innerText = "今天一共花了" + dayMoney + "块";
             totalDiv.innerText = "已经花了" + totalMoney + "块";
-            monthTotalDiv.innerText = "这样下去估计花" + monthMoney + "块";
+            monthTotalDiv.innerText = "这样下去估计花" + (monthMoney + totalMoney) + "块";
         }
     }();
 </script>

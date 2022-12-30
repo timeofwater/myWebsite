@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circube</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="../pictures/shortcutLogo.png"/>
+    <link rel="stylesheet" href="../Css/general.css" type="text/css">
+    <link rel="stylesheet" href="../Css/font.css" type="text/css">
+    <link rel="stylesheet" href="../Css/navigator.css" type="text/css">
+    <script src="../Js/jquery-3.6.0.min.js"></script>
+
+    <style>
+        html {
+            font-size: min(1vw, 1vh);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50rem;
+            background-color: wheat;
+        }
+
+        .up {
+            position: absolute;
+            top: 9rem;
+            left: calc(50% - 15rem);
+            background-color: #1d263b;
+        }
+
+        .left {
+            position: absolute;
+            top: 21rem;
+            left: calc(50% - 22.5rem);
+            width: 30rem;
+            height: 30rem;
+            transform: rotate(-120deg);
+            transform-origin: 50% 50%;
+        }
+
+        .right {
+            position: absolute;
+            top: 21rem;
+            left: calc(50% - 7.5rem);
+            width: 30rem;
+            height: 30rem;
+            transform: rotate(120deg);
+            transform-origin: 50% 50%;
+        }
+
+        .max {
+            position: absolute;
+            border-radius: 100%;
+            top: 0rem;
+            left: 0rem;
+            width: 30rem;
+            height: 30rem;
+            border: 1px solid #111111;
+        }
+
+        .mid {
+            position: absolute;
+            border-radius: 100%;
+            top: 2.5rem;
+            left: 2.5rem;
+            width: 25rem;
+            height: 25rem;
+            border: 1px solid #111111;
+        }
+
+        .min {
+            position: absolute;
+            border-radius: 100%;
+            top: 5rem;
+            left: 5rem;
+            width: 20rem;
+            height: 20rem;
+            border: 1px solid #111111;
+        }
+
+        .cw {
+            position: relative;
+            top: -1rem;
+            left: calc(50% - 4rem);
+            font-size: 2rem;
+            user-select: none;
+        }
+
+        .aw {
+            position: relative;
+            top: -1rem;
+            left: calc(50%);
+            font-size: 2rem;
+            user-select: none;
+        }
+
+        .ball {
+            position: absolute;
+            border-radius: 100%;
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid #111111;
+        }
+
+        #roll {
+            position: absolute;
+            left: calc(50% - 30rem);
+            top: 10rem;
+            width: 5rem;
+            height: 3rem;
+            font-size: 2.5rem;
+            user-select: none;
+            background-color: #a8afbe;
+        }
+
+        #init {
+            position: absolute;
+            left: calc(50% + 25rem);
+            top: 10rem;
+            width: 5rem;
+            height: 3rem;
+            font-size: 2.5rem;
+            user-select: none;
+            background-color: #a8afbe;
+        }
+
+        .y_c {
+            background-color: yellow;
+        }
+
+        .w_c {
+            background-color: turquoise;
+        }
+
+        .b_c {
+            background-color: blue;
+        }
+
+        .g_c {
+            background-color: green;
+        }
+
+        .r_c {
+            background-color: red;
+        }
+
+        .o_c {
+            background-color: orange;
+        }
+
+        #balls {
+            position: absolute;
+        }
+
+        #b1 {
+            position: absolute;
+            top: -9rem;
+            left: -16rem;
+        }
+
+        #b2 {
+            position: absolute;
+            top: -10.2rem;
+            left: -13.3rem;
+        }
+
+        #b3 {
+            position: absolute;
+            top: -10.9rem;
+            left: -10.5rem;
+        }
+
+        #b4 {
+            position: absolute;
+            top: -6rem;
+            left: -16rem;
+        }
+
+        #b5 {
+            position: absolute;
+            top: -7.4rem;
+            left: -13.5rem;
+        }
+
+        #b6 {
+            position: absolute;
+            top: -8.2rem;
+            left: -11rem;
+        }
+
+        #b7 {
+            position: absolute;
+            top: -3.3rem;
+            left: -15.2rem;
+        }
+
+        #b8 {
+            position: absolute;
+            top: -4.8rem;
+            left: -13.1rem;
+        }
+
+        #b9 {
+            position: absolute;
+            top: -5.8rem;
+            left: -10.7rem;
+        }
+
+        #b10 {
+            position: absolute;
+            top: -8.8rem;
+            left: -1rem;
+        }
+
+        #b11 {
+            position: absolute;
+            top: -7.3rem;
+            left: 1.3rem;
+        }
+
+        #b12 {
+            position: absolute;
+            top: -5.3rem;
+            left: 3.2rem;
+        }
+
+        #b13 {
+            position: absolute;
+            top: -7.2rem;
+            left: -3.4rem;
+        }
+
+        #b14 {
+            position: absolute;
+            top: -6rem;
+            left: -1.1rem;
+        }
+
+        #b15 {
+            position: absolute;
+            top: -4.3rem;
+            left: 0.8rem;
+        }
+
+        #b16 {
+            position: absolute;
+            top: -5.4rem;
+            left: -5.2rem;
+        }
+
+        #b17 {
+            position: absolute;
+            top: -4.2rem;
+            left: -2.8rem;
+        }
+
+        #b18 {
+            position: absolute;
+            top: -2.3rem;
+            left: -1rem;
+        }
+
+        #b19 {
+            position: absolute;
+            top: -10.9rem;
+            left: 8.5rem;
+        }
+
+        #b20 {
+            position: absolute;
+            top: -10.3rem;
+            left: 11.3rem;
+        }
+
+        #b21 {
+            position: absolute;
+            top: -9.1rem;
+            left: 14rem;
+        }
+
+        #b22 {
+            position: absolute;
+            top: -8.1rem;
+            left: 9rem;
+        }
+
+        #b23 {
+            position: absolute;
+            top: -7.6rem;
+            left: 11.5rem;
+        }
+
+        #b24 {
+            position: absolute;
+            top: -6.1rem;
+            left: 14rem;
+        }
+
+        #b25 {
+            position: absolute;
+            top: -5.6rem;
+            left: 8.7rem;
+        }
+
+        #b26 {
+            position: absolute;
+            top: -5rem;
+            left: 11.2rem;
+        }
+
+        #b27 {
+            position: absolute;
+            top: -3.5rem;
+            left: 13.4rem;
+        }
+
+        #b28 {
+            position: absolute;
+            top: -0.7rem;
+            left: -7.6rem;
+        }
+
+        #b29 {
+            position: absolute;
+            top: 0.9rem;
+            left: -5.5rem;
+        }
+
+        #b30 {
+            position: absolute;
+            top: 1.7rem;
+            left: -3.2rem;
+        }
+
+        #b31 {
+            position: absolute;
+            top: 2.2rem;
+            left: -8.2rem;
+        }
+
+        #b32 {
+            position: absolute;
+            top: 3.4rem;
+            left: -5.8rem;
+        }
+
+        #b33 {
+            position: absolute;
+            top: 4.1rem;
+            left: -3.4rem;
+        }
+
+        #b34 {
+            position: absolute;
+            top: 4.9rem;
+            left: -8.5rem;
+        }
+
+        #b35 {
+            position: absolute;
+            top: 6.1rem;
+            left: -5.7rem;
+        }
+
+        #b36 {
+            position: absolute;
+            top: 6.7rem;
+            left: -3rem;
+        }
+
+        #b37 {
+            position: absolute;
+            top: 1.7rem;
+            left: 1rem;
+        }
+
+        #b38 {
+            position: absolute;
+            top: 1rem;
+            left: 3.5rem;
+        }
+
+        #b39 {
+            position: absolute;
+            top: -0.3rem;
+            left: 5.8rem;
+        }
+
+        #b40 {
+            position: absolute;
+            top: 4.2rem;
+            left: 1.4rem;
+        }
+
+        #b41 {
+            position: absolute;
+            top: 3.5rem;
+            left: 4.1rem;
+        }
+
+        #b42 {
+            position: absolute;
+            top: 2.2rem;
+            left: 6.3rem;
+        }
+
+        #b43 {
+            position: absolute;
+            top: 6.7rem;
+            left: 0.9rem;
+        }
+
+        #b44 {
+            position: absolute;
+            top: 6.1rem;
+            left: 3.8rem;
+        }
+
+        #b45 {
+            position: absolute;
+            top: 4.9rem;
+            left: 6.5rem;
+        }
+
+        #b46 {
+            position: absolute;
+            top: 10.7rem;
+            left: -1rem;
+        }
+
+        #b47 {
+            position: absolute;
+            top: 12.2rem;
+            left: 0.9rem;
+        }
+
+        #b48 {
+            position: absolute;
+            top: 13.4rem;
+            left: 3.2rem;
+        }
+
+        #b49 {
+            position: absolute;
+            top: 12.1rem;
+            left: -2.9rem;
+        }
+
+        #b50 {
+            position: absolute;
+            top: 14rem;
+            left: -1rem;
+        }
+
+        #b51 {
+            position: absolute;
+            top: 15.3rem;
+            left: 1.1rem;
+        }
+
+        #b52 {
+            position: absolute;
+            top: 13.4rem;
+            left: -5.2rem;
+        }
+
+        #b53 {
+            position: absolute;
+            top: 15.4rem;
+            left: -3.3rem;
+        }
+
+        #b54 {
+            position: absolute;
+            top: 17rem;
+            left: -1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="up">
+        <div class="max">
+            <div class="cw" onclick="uMax()">←</div>
+            <div class="aw" onclick="UMax()">→</div>
+        </div>
+        <div class="mid">
+            <div class="cw" onclick="uMid()">←</div>
+            <div class="aw" onclick="UMid()">→</div>
+        </div>
+        <div class="min">
+            <div class="cw" onclick="uMin()">←</div>
+            <div class="aw" onclick="UMin()">→</div>
+        </div>
+    </div>
+    <div class="left">
+        <div class="max">
+            <div class="cw" onclick="LMax()">←</div>
+            <div class="aw" onclick="lMax()">→</div>
+        </div>
+        <div class="mid">
+            <div class="cw" onclick="LMid()">←</div>
+            <div class="aw" onclick="lMid()">→</div>
+        </div>
+        <div class="min">
+            <div class="cw" onclick="LMin()">←</div>
+            <div class="aw" onclick="lMin()">→</div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="max">
+            <div class="cw" onclick="rMax()">←</div>
+            <div class="aw" onclick="RMax()">→</div>
+        </div>
+        <div class="mid">
+            <div class="cw" onclick="rMid()">←</div>
+            <div class="aw" onclick="RMid()">→</div>
+        </div>
+        <div class="min">
+            <div class="cw" onclick="rMin()">←</div>
+            <div class="aw" onclick="RMin()">→</div>
+        </div>
+    </div>
+    <div id="roll" onclick="rollC()">打乱</div>
+    <div id="init" onclick="iniC()">复原</div>
+    <div id="balls">
+        <div id="b1" class="ball w_c"></div>
+        <div id="b2" class="ball w_c"></div>
+        <div id="b3" class="ball w_c"></div>
+        <div id="b4" class="ball w_c"></div>
+        <div id="b5" class="ball w_c"></div>
+        <div id="b6" class="ball w_c"></div>
+        <div id="b7" class="ball w_c"></div>
+        <div id="b8" class="ball w_c"></div>
+        <div id="b9" class="ball w_c"></div>
+        <div id="b10" class="ball r_c"></div>
+        <div id="b11" class="ball r_c"></div>
+        <div id="b12" class="ball r_c"></div>
+        <div id="b13" class="ball r_c"></div>
+        <div id="b14" class="ball r_c"></div>
+        <div id="b15" class="ball r_c"></div>
+        <div id="b16" class="ball r_c"></div>
+        <div id="b17" class="ball r_c"></div>
+        <div id="b18" class="ball r_c"></div>
+        <div id="b19" class="ball g_c"></div>
+        <div id="b20" class="ball g_c"></div>
+        <div id="b21" class="ball g_c"></div>
+        <div id="b22" class="ball g_c"></div>
+        <div id="b23" class="ball g_c"></div>
+        <div id="b24" class="ball g_c"></div>
+        <div id="b25" class="ball g_c"></div>
+        <div id="b26" class="ball g_c"></div>
+        <div id="b27" class="ball g_c"></div>
+        <div id="b28" class="ball b_c"></div>
+        <div id="b29" class="ball b_c"></div>
+        <div id="b30" class="ball b_c"></div>
+        <div id="b31" class="ball b_c"></div>
+        <div id="b32" class="ball b_c"></div>
+        <div id="b33" class="ball b_c"></div>
+        <div id="b34" class="ball b_c"></div>
+        <div id="b35" class="ball b_c"></div>
+        <div id="b36" class="ball b_c"></div>
+        <div id="b37" class="ball y_c"></div>
+        <div id="b38" class="ball y_c"></div>
+        <div id="b39" class="ball y_c"></div>
+        <div id="b40" class="ball y_c"></div>
+        <div id="b41" class="ball y_c"></div>
+        <div id="b42" class="ball y_c"></div>
+        <div id="b43" class="ball y_c"></div>
+        <div id="b44" class="ball y_c"></div>
+        <div id="b45" class="ball y_c"></div>
+        <div id="b46" class="ball o_c"></div>
+        <div id="b47" class="ball o_c"></div>
+        <div id="b48" class="ball o_c"></div>
+        <div id="b49" class="ball o_c"></div>
+        <div id="b50" class="ball o_c"></div>
+        <div id="b51" class="ball o_c"></div>
+        <div id="b52" class="ball o_c"></div>
+        <div id="b53" class="ball o_c"></div>
+        <div id="b54" class="ball o_c"></div>
+    </div>
+
+</div>
+
+
+<script>
+
+    var c_a;
+    var temp_c;
+
+    function RMin() {
+        temp_c = c_a[27];
+        c_a[27] = c_a[26];
+        c_a[26] = c_a[25];
+        c_a[25] = c_a[12];
+        c_a[12] = c_a[15];
+        c_a[15] = c_a[18];
+        c_a[18] = c_a[30];
+        c_a[30] = c_a[33];
+        c_a[33] = c_a[36];
+        c_a[36] = c_a[46];
+        c_a[46] = c_a[47];
+        c_a[47] = c_a[48];
+        c_a[48] = temp_c;
+        temp_c = c_a[27];
+        c_a[27] = c_a[26];
+        c_a[26] = c_a[25];
+        c_a[25] = c_a[12];
+        c_a[12] = c_a[15];
+        c_a[15] = c_a[18];
+        c_a[18] = c_a[30];
+        c_a[30] = c_a[33];
+        c_a[33] = c_a[36];
+        c_a[36] = c_a[46];
+        c_a[46] = c_a[47];
+        c_a[47] = c_a[48];
+        c_a[48] = temp_c;
+        temp_c = c_a[27];
+        c_a[27] = c_a[26];
+        c_a[26] = c_a[25];
+        c_a[25] = c_a[12];
+        c_a[12] = c_a[15];
+        c_a[15] = c_a[18];
+        c_a[18] = c_a[30];
+        c_a[30] = c_a[33];
+        c_a[33] = c_a[36];
+        c_a[36] = c_a[46];
+        c_a[46] = c_a[47];
+        c_a[47] = c_a[48];
+        c_a[48] = temp_c;
+        flashC();
+    }
+
+    function RMid() {
+        temp_c = c_a[24];
+        c_a[24] = c_a[23];
+        c_a[23] = c_a[22];
+        c_a[22] = c_a[11];
+        c_a[11] = c_a[14];
+        c_a[14] = c_a[17];
+        c_a[17] = c_a[29];
+        c_a[29] = c_a[32];
+        c_a[32] = c_a[35];
+        c_a[35] = c_a[49];
+        c_a[49] = c_a[50];
+        c_a[50] = c_a[51];
+        c_a[51] = temp_c;
+        temp_c = c_a[24];
+        c_a[24] = c_a[23];
+        c_a[23] = c_a[22];
+        c_a[22] = c_a[11];
+        c_a[11] = c_a[14];
+        c_a[14] = c_a[17];
+        c_a[17] = c_a[29];
+        c_a[29] = c_a[32];
+        c_a[32] = c_a[35];
+        c_a[35] = c_a[49];
+        c_a[49] = c_a[50];
+        c_a[50] = c_a[51];
+        c_a[51] = temp_c;
+        temp_c = c_a[24];
+        c_a[24] = c_a[23];
+        c_a[23] = c_a[22];
+        c_a[22] = c_a[11];
+        c_a[11] = c_a[14];
+        c_a[14] = c_a[17];
+        c_a[17] = c_a[29];
+        c_a[29] = c_a[32];
+        c_a[32] = c_a[35];
+        c_a[35] = c_a[49];
+        c_a[49] = c_a[50];
+        c_a[50] = c_a[51];
+        c_a[51] = temp_c;
+        flashC();
+    }
+
+    function RMax() {
+        temp_c = c_a[21];
+        c_a[21] = c_a[20];
+        c_a[20] = c_a[19];
+        c_a[19] = c_a[10];
+        c_a[10] = c_a[13];
+        c_a[13] = c_a[16];
+        c_a[16] = c_a[28];
+        c_a[28] = c_a[31];
+        c_a[31] = c_a[34];
+        c_a[34] = c_a[52];
+        c_a[52] = c_a[53];
+        c_a[53] = c_a[54];
+        c_a[54] = temp_c;
+        temp_c = c_a[21];
+        c_a[21] = c_a[20];
+        c_a[20] = c_a[19];
+        c_a[19] = c_a[10];
+        c_a[10] = c_a[13];
+        c_a[13] = c_a[16];
+        c_a[16] = c_a[28];
+        c_a[28] = c_a[31];
+        c_a[31] = c_a[34];
+        c_a[34] = c_a[52];
+        c_a[52] = c_a[53];
+        c_a[53] = c_a[54];
+        c_a[54] = temp_c;
+        temp_c = c_a[21];
+        c_a[21] = c_a[20];
+        c_a[20] = c_a[19];
+        c_a[19] = c_a[10];
+        c_a[10] = c_a[13];
+        c_a[13] = c_a[16];
+        c_a[16] = c_a[28];
+        c_a[28] = c_a[31];
+        c_a[31] = c_a[34];
+        c_a[34] = c_a[52];
+        c_a[52] = c_a[53];
+        c_a[53] = c_a[54];
+        c_a[54] = temp_c;
+        flashC();
+    }
+
+    function rMin() {
+        temp_c = c_a[48];
+        c_a[48] = c_a[47];
+        c_a[47] = c_a[46];
+        c_a[46] = c_a[36];
+        c_a[36] = c_a[33];
+        c_a[33] = c_a[30];
+        c_a[30] = c_a[18];
+        c_a[18] = c_a[15];
+        c_a[15] = c_a[12];
+        c_a[12] = c_a[25];
+        c_a[25] = c_a[26];
+        c_a[26] = c_a[27];
+        c_a[27] = temp_c;
+        temp_c = c_a[48];
+        c_a[48] = c_a[47];
+        c_a[47] = c_a[46];
+        c_a[46] = c_a[36];
+        c_a[36] = c_a[33];
+        c_a[33] = c_a[30];
+        c_a[30] = c_a[18];
+        c_a[18] = c_a[15];
+        c_a[15] = c_a[12];
+        c_a[12] = c_a[25];
+        c_a[25] = c_a[26];
+        c_a[26] = c_a[27];
+        c_a[27] = temp_c;
+        temp_c = c_a[48];
+        c_a[48] = c_a[47];
+        c_a[47] = c_a[46];
+        c_a[46] = c_a[36];
+        c_a[36] = c_a[33];
+        c_a[33] = c_a[30];
+        c_a[30] = c_a[18];
+        c_a[18] = c_a[15];
+        c_a[15] = c_a[12];
+        c_a[12] = c_a[25];
+        c_a[25] = c_a[26];
+        c_a[26] = c_a[27];
+        c_a[27] = temp_c;
+        flashC();
+    }
+
+    function rMid() {
+        temp_c = c_a[51];
+        c_a[51] = c_a[50];
+        c_a[50] = c_a[49];
+        c_a[49] = c_a[35];
+        c_a[35] = c_a[32];
+        c_a[32] = c_a[29];
+        c_a[29] = c_a[17];
+        c_a[17] = c_a[14];
+        c_a[14] = c_a[11];
+        c_a[11] = c_a[22];
+        c_a[22] = c_a[23];
+        c_a[23] = c_a[24];
+        c_a[24] = temp_c;
+        temp_c = c_a[51];
+        c_a[51] = c_a[50];
+        c_a[50] = c_a[49];
+        c_a[49] = c_a[35];
+        c_a[35] = c_a[32];
+        c_a[32] = c_a[29];
+        c_a[29] = c_a[17];
+        c_a[17] = c_a[14];
+        c_a[14] = c_a[11];
+        c_a[11] = c_a[22];
+        c_a[22] = c_a[23];
+        c_a[23] = c_a[24];
+        c_a[24] = temp_c;
+        temp_c = c_a[51];
+        c_a[51] = c_a[50];
+        c_a[50] = c_a[49];
+        c_a[49] = c_a[35];
+        c_a[35] = c_a[32];
+        c_a[32] = c_a[29];
+        c_a[29] = c_a[17];
+        c_a[17] = c_a[14];
+        c_a[14] = c_a[11];
+        c_a[11] = c_a[22];
+        c_a[22] = c_a[23];
+        c_a[23] = c_a[24];
+        c_a[24] = temp_c;
+        flashC();
+    }
+
+    function rMax() {
+        temp_c = c_a[54];
+        c_a[54] = c_a[53];
+        c_a[53] = c_a[52];
+        c_a[52] = c_a[34];
+        c_a[34] = c_a[31];
+        c_a[31] = c_a[28];
+        c_a[28] = c_a[16];
+        c_a[16] = c_a[13];
+        c_a[13] = c_a[10];
+        c_a[10] = c_a[19];
+        c_a[19] = c_a[20];
+        c_a[20] = c_a[21];
+        c_a[21] = temp_c;
+        temp_c = c_a[54];
+        c_a[54] = c_a[53];
+        c_a[53] = c_a[52];
+        c_a[52] = c_a[34];
+        c_a[34] = c_a[31];
+        c_a[31] = c_a[28];
+        c_a[28] = c_a[16];
+        c_a[16] = c_a[13];
+        c_a[13] = c_a[10];
+        c_a[10] = c_a[19];
+        c_a[19] = c_a[20];
+        c_a[20] = c_a[21];
+        c_a[21] = temp_c;
+        temp_c = c_a[54];
+        c_a[54] = c_a[53];
+        c_a[53] = c_a[52];
+        c_a[52] = c_a[34];
+        c_a[34] = c_a[31];
+        c_a[31] = c_a[28];
+        c_a[28] = c_a[16];
+        c_a[16] = c_a[13];
+        c_a[13] = c_a[10];
+        c_a[10] = c_a[19];
+        c_a[19] = c_a[20];
+        c_a[20] = c_a[21];
+        c_a[21] = temp_c;
+        flashC();
+    }
+
+    function UMin() {
+        temp_c = c_a[3];
+        c_a[3] = c_a[6];
+        c_a[6] = c_a[9];
+        c_a[9] = c_a[28];
+        c_a[28] = c_a[29];
+        c_a[29] = c_a[30];
+        c_a[30] = c_a[37];
+        c_a[37] = c_a[38];
+        c_a[38] = c_a[39];
+        c_a[39] = c_a[25];
+        c_a[25] = c_a[22];
+        c_a[22] = c_a[19];
+        c_a[19] = temp_c;
+        temp_c = c_a[3];
+        c_a[3] = c_a[6];
+        c_a[6] = c_a[9];
+        c_a[9] = c_a[28];
+        c_a[28] = c_a[29];
+        c_a[29] = c_a[30];
+        c_a[30] = c_a[37];
+        c_a[37] = c_a[38];
+        c_a[38] = c_a[39];
+        c_a[39] = c_a[25];
+        c_a[25] = c_a[22];
+        c_a[22] = c_a[19];
+        c_a[19] = temp_c;
+        temp_c = c_a[3];
+        c_a[3] = c_a[6];
+        c_a[6] = c_a[9];
+        c_a[9] = c_a[28];
+        c_a[28] = c_a[29];
+        c_a[29] = c_a[30];
+        c_a[30] = c_a[37];
+        c_a[37] = c_a[38];
+        c_a[38] = c_a[39];
+        c_a[39] = c_a[25];
+        c_a[25] = c_a[22];
+        c_a[22] = c_a[19];
+        c_a[19] = temp_c;
+        flashC();
+    }
+
+    function UMid() {
+        temp_c = c_a[2];
+        c_a[2] = c_a[5];
+        c_a[5] = c_a[8];
+        c_a[8] = c_a[31];
+        c_a[31] = c_a[32];
+        c_a[32] = c_a[33];
+        c_a[33] = c_a[40];
+        c_a[40] = c_a[41];
+        c_a[41] = c_a[42];
+        c_a[42] = c_a[26];
+        c_a[26] = c_a[23];
+        c_a[23] = c_a[20];
+        c_a[20] = temp_c;
+        temp_c = c_a[2];
+        c_a[2] = c_a[5];
+        c_a[5] = c_a[8];
+        c_a[8] = c_a[31];
+        c_a[31] = c_a[32];
+        c_a[32] = c_a[33];
+        c_a[33] = c_a[40];
+        c_a[40] = c_a[41];
+        c_a[41] = c_a[42];
+        c_a[42] = c_a[26];
+        c_a[26] = c_a[23];
+        c_a[23] = c_a[20];
+        c_a[20] = temp_c;
+        temp_c = c_a[2];
+        c_a[2] = c_a[5];
+        c_a[5] = c_a[8];
+        c_a[8] = c_a[31];
+        c_a[31] = c_a[32];
+        c_a[32] = c_a[33];
+        c_a[33] = c_a[40];
+        c_a[40] = c_a[41];
+        c_a[41] = c_a[42];
+        c_a[42] = c_a[26];
+        c_a[26] = c_a[23];
+        c_a[23] = c_a[20];
+        c_a[20] = temp_c;
+        flashC();
+    }
+
+    function UMax() {
+        temp_c = c_a[1];
+        c_a[1] = c_a[4];
+        c_a[4] = c_a[7];
+        c_a[7] = c_a[34];
+        c_a[34] = c_a[35];
+        c_a[35] = c_a[36];
+        c_a[36] = c_a[43];
+        c_a[43] = c_a[44];
+        c_a[44] = c_a[45];
+        c_a[45] = c_a[27];
+        c_a[27] = c_a[24];
+        c_a[24] = c_a[21];
+        c_a[21] = temp_c;
+        temp_c = c_a[1];
+        c_a[1] = c_a[4];
+        c_a[4] = c_a[7];
+        c_a[7] = c_a[34];
+        c_a[34] = c_a[35];
+        c_a[35] = c_a[36];
+        c_a[36] = c_a[43];
+        c_a[43] = c_a[44];
+        c_a[44] = c_a[45];
+        c_a[45] = c_a[27];
+        c_a[27] = c_a[24];
+        c_a[24] = c_a[21];
+        c_a[21] = temp_c;
+        temp_c = c_a[1];
+        c_a[1] = c_a[4];
+        c_a[4] = c_a[7];
+        c_a[7] = c_a[34];
+        c_a[34] = c_a[35];
+        c_a[35] = c_a[36];
+        c_a[36] = c_a[43];
+        c_a[43] = c_a[44];
+        c_a[44] = c_a[45];
+        c_a[45] = c_a[27];
+        c_a[27] = c_a[24];
+        c_a[24] = c_a[21];
+        c_a[21] = temp_c;
+        flashC();
+    }
+
+    function uMin() {
+        temp_c = c_a[19];
+        c_a[19] = c_a[22];
+        c_a[22] = c_a[25];
+        c_a[25] = c_a[39];
+        c_a[39] = c_a[38];
+        c_a[38] = c_a[37];
+        c_a[37] = c_a[30];
+        c_a[30] = c_a[29];
+        c_a[29] = c_a[28];
+        c_a[28] = c_a[9];
+        c_a[9] = c_a[6];
+        c_a[6] = c_a[3];
+        c_a[3] = temp_c;
+        temp_c = c_a[19];
+        c_a[19] = c_a[22];
+        c_a[22] = c_a[25];
+        c_a[25] = c_a[39];
+        c_a[39] = c_a[38];
+        c_a[38] = c_a[37];
+        c_a[37] = c_a[30];
+        c_a[30] = c_a[29];
+        c_a[29] = c_a[28];
+        c_a[28] = c_a[9];
+        c_a[9] = c_a[6];
+        c_a[6] = c_a[3];
+        c_a[3] = temp_c;
+        temp_c = c_a[19];
+        c_a[19] = c_a[22];
+        c_a[22] = c_a[25];
+        c_a[25] = c_a[39];
+        c_a[39] = c_a[38];
+        c_a[38] = c_a[37];
+        c_a[37] = c_a[30];
+        c_a[30] = c_a[29];
+        c_a[29] = c_a[28];
+        c_a[28] = c_a[9];
+        c_a[9] = c_a[6];
+        c_a[6] = c_a[3];
+        c_a[3] = temp_c;
+        flashC();
+    }
+
+    function uMid() {
+        temp_c = c_a[20];
+        c_a[20] = c_a[23];
+        c_a[23] = c_a[26];
+        c_a[26] = c_a[42];
+        c_a[42] = c_a[41];
+        c_a[41] = c_a[40];
+        c_a[40] = c_a[33];
+        c_a[33] = c_a[32];
+        c_a[32] = c_a[31];
+        c_a[31] = c_a[8];
+        c_a[8] = c_a[5];
+        c_a[5] = c_a[2];
+        c_a[2] = temp_c;
+        temp_c = c_a[20];
+        c_a[20] = c_a[23];
+        c_a[23] = c_a[26];
+        c_a[26] = c_a[42];
+        c_a[42] = c_a[41];
+        c_a[41] = c_a[40];
+        c_a[40] = c_a[33];
+        c_a[33] = c_a[32];
+        c_a[32] = c_a[31];
+        c_a[31] = c_a[8];
+        c_a[8] = c_a[5];
+        c_a[5] = c_a[2];
+        c_a[2] = temp_c;
+        temp_c = c_a[20];
+        c_a[20] = c_a[23];
+        c_a[23] = c_a[26];
+        c_a[26] = c_a[42];
+        c_a[42] = c_a[41];
+        c_a[41] = c_a[40];
+        c_a[40] = c_a[33];
+        c_a[33] = c_a[32];
+        c_a[32] = c_a[31];
+        c_a[31] = c_a[8];
+        c_a[8] = c_a[5];
+        c_a[5] = c_a[2];
+        c_a[2] = temp_c;
+        flashC();
+    }
+
+    function uMax() {
+        temp_c = c_a[21];
+        c_a[21] = c_a[24];
+        c_a[24] = c_a[27];
+        c_a[27] = c_a[45];
+        c_a[45] = c_a[44];
+        c_a[44] = c_a[43];
+        c_a[43] = c_a[36];
+        c_a[36] = c_a[35];
+        c_a[35] = c_a[34];
+        c_a[34] = c_a[7];
+        c_a[7] = c_a[4];
+        c_a[4] = c_a[1];
+        c_a[1] = temp_c;
+        temp_c = c_a[21];
+        c_a[21] = c_a[24];
+        c_a[24] = c_a[27];
+        c_a[27] = c_a[45];
+        c_a[45] = c_a[44];
+        c_a[44] = c_a[43];
+        c_a[43] = c_a[36];
+        c_a[36] = c_a[35];
+        c_a[35] = c_a[34];
+        c_a[34] = c_a[7];
+        c_a[7] = c_a[4];
+        c_a[4] = c_a[1];
+        c_a[1] = temp_c;
+        temp_c = c_a[21];
+        c_a[21] = c_a[24];
+        c_a[24] = c_a[27];
+        c_a[27] = c_a[45];
+        c_a[45] = c_a[44];
+        c_a[44] = c_a[43];
+        c_a[43] = c_a[36];
+        c_a[36] = c_a[35];
+        c_a[35] = c_a[34];
+        c_a[34] = c_a[7];
+        c_a[7] = c_a[4];
+        c_a[4] = c_a[1];
+        c_a[1] = temp_c;
+        flashC();
+    }
+
+    function LMin() {
+        temp_c = c_a[7];
+        c_a[7] = c_a[8];
+        c_a[8] = c_a[9];
+        c_a[9] = c_a[16];
+        c_a[16] = c_a[17];
+        c_a[17] = c_a[18];
+        c_a[18] = c_a[37];
+        c_a[37] = c_a[40];
+        c_a[40] = c_a[43];
+        c_a[43] = c_a[46];
+        c_a[46] = c_a[49];
+        c_a[49] = c_a[52];
+        c_a[52] = temp_c;
+        temp_c = c_a[7];
+        c_a[7] = c_a[8];
+        c_a[8] = c_a[9];
+        c_a[9] = c_a[16];
+        c_a[16] = c_a[17];
+        c_a[17] = c_a[18];
+        c_a[18] = c_a[37];
+        c_a[37] = c_a[40];
+        c_a[40] = c_a[43];
+        c_a[43] = c_a[46];
+        c_a[46] = c_a[49];
+        c_a[49] = c_a[52];
+        c_a[52] = temp_c;
+        temp_c = c_a[7];
+        c_a[7] = c_a[8];
+        c_a[8] = c_a[9];
+        c_a[9] = c_a[16];
+        c_a[16] = c_a[17];
+        c_a[17] = c_a[18];
+        c_a[18] = c_a[37];
+        c_a[37] = c_a[40];
+        c_a[40] = c_a[43];
+        c_a[43] = c_a[46];
+        c_a[46] = c_a[49];
+        c_a[49] = c_a[52];
+        c_a[52] = temp_c;
+        flashC();
+    }
+
+    function LMid() {
+        temp_c = c_a[4];
+        c_a[4] = c_a[5];
+        c_a[5] = c_a[6];
+        c_a[6] = c_a[13];
+        c_a[13] = c_a[14];
+        c_a[14] = c_a[15];
+        c_a[15] = c_a[38];
+        c_a[38] = c_a[41];
+        c_a[41] = c_a[44];
+        c_a[44] = c_a[47];
+        c_a[47] = c_a[50];
+        c_a[50] = c_a[53];
+        c_a[53] = temp_c;
+        temp_c = c_a[4];
+        c_a[4] = c_a[5];
+        c_a[5] = c_a[6];
+        c_a[6] = c_a[13];
+        c_a[13] = c_a[14];
+        c_a[14] = c_a[15];
+        c_a[15] = c_a[38];
+        c_a[38] = c_a[41];
+        c_a[41] = c_a[44];
+        c_a[44] = c_a[47];
+        c_a[47] = c_a[50];
+        c_a[50] = c_a[53];
+        c_a[53] = temp_c;
+        temp_c = c_a[4];
+        c_a[4] = c_a[5];
+        c_a[5] = c_a[6];
+        c_a[6] = c_a[13];
+        c_a[13] = c_a[14];
+        c_a[14] = c_a[15];
+        c_a[15] = c_a[38];
+        c_a[38] = c_a[41];
+        c_a[41] = c_a[44];
+        c_a[44] = c_a[47];
+        c_a[47] = c_a[50];
+        c_a[50] = c_a[53];
+        c_a[53] = temp_c;
+        flashC();
+    }
+
+    function LMax() {
+        temp_c = c_a[1];
+        c_a[1] = c_a[2];
+        c_a[2] = c_a[3];
+        c_a[3] = c_a[10];
+        c_a[10] = c_a[11];
+        c_a[11] = c_a[12];
+        c_a[12] = c_a[39];
+        c_a[39] = c_a[42];
+        c_a[42] = c_a[45];
+        c_a[45] = c_a[48];
+        c_a[48] = c_a[51];
+        c_a[51] = c_a[54];
+        c_a[54] = temp_c;
+        temp_c = c_a[1];
+        c_a[1] = c_a[2];
+        c_a[2] = c_a[3];
+        c_a[3] = c_a[10];
+        c_a[10] = c_a[11];
+        c_a[11] = c_a[12];
+        c_a[12] = c_a[39];
+        c_a[39] = c_a[42];
+        c_a[42] = c_a[45];
+        c_a[45] = c_a[48];
+        c_a[48] = c_a[51];
+        c_a[51] = c_a[54];
+        c_a[54] = temp_c;
+        temp_c = c_a[1];
+        c_a[1] = c_a[2];
+        c_a[2] = c_a[3];
+        c_a[3] = c_a[10];
+        c_a[10] = c_a[11];
+        c_a[11] = c_a[12];
+        c_a[12] = c_a[39];
+        c_a[39] = c_a[42];
+        c_a[42] = c_a[45];
+        c_a[45] = c_a[48];
+        c_a[48] = c_a[51];
+        c_a[51] = c_a[54];
+        c_a[54] = temp_c;
+        flashC();
+    }
+
+    function lMin() {
+        temp_c = c_a[52];
+        c_a[52] = c_a[49];
+        c_a[49] = c_a[46];
+        c_a[46] = c_a[43];
+        c_a[43] = c_a[40];
+        c_a[40] = c_a[37];
+        c_a[37] = c_a[18];
+        c_a[18] = c_a[17];
+        c_a[17] = c_a[16];
+        c_a[16] = c_a[9];
+        c_a[9] = c_a[8];
+        c_a[8] = c_a[7];
+        c_a[7] = temp_c;
+        temp_c = c_a[52];
+        c_a[52] = c_a[49];
+        c_a[49] = c_a[46];
+        c_a[46] = c_a[43];
+        c_a[43] = c_a[40];
+        c_a[40] = c_a[37];
+        c_a[37] = c_a[18];
+        c_a[18] = c_a[17];
+        c_a[17] = c_a[16];
+        c_a[16] = c_a[9];
+        c_a[9] = c_a[8];
+        c_a[8] = c_a[7];
+        c_a[7] = temp_c;
+        temp_c = c_a[52];
+        c_a[52] = c_a[49];
+        c_a[49] = c_a[46];
+        c_a[46] = c_a[43];
+        c_a[43] = c_a[40];
+        c_a[40] = c_a[37];
+        c_a[37] = c_a[18];
+        c_a[18] = c_a[17];
+        c_a[17] = c_a[16];
+        c_a[16] = c_a[9];
+        c_a[9] = c_a[8];
+        c_a[8] = c_a[7];
+        c_a[7] = temp_c;
+        flashC();
+    }
+
+    function lMid() {
+        temp_c = c_a[53];
+        c_a[53] = c_a[50];
+        c_a[50] = c_a[47];
+        c_a[47] = c_a[44];
+        c_a[44] = c_a[41];
+        c_a[41] = c_a[38];
+        c_a[38] = c_a[15];
+        c_a[15] = c_a[14];
+        c_a[14] = c_a[13];
+        c_a[13] = c_a[6];
+        c_a[6] = c_a[5];
+        c_a[5] = c_a[4];
+        c_a[4] = temp_c;
+        temp_c = c_a[53];
+        c_a[53] = c_a[50];
+        c_a[50] = c_a[47];
+        c_a[47] = c_a[44];
+        c_a[44] = c_a[41];
+        c_a[41] = c_a[38];
+        c_a[38] = c_a[15];
+        c_a[15] = c_a[14];
+        c_a[14] = c_a[13];
+        c_a[13] = c_a[6];
+        c_a[6] = c_a[5];
+        c_a[5] = c_a[4];
+        c_a[4] = temp_c;
+        temp_c = c_a[53];
+        c_a[53] = c_a[50];
+        c_a[50] = c_a[47];
+        c_a[47] = c_a[44];
+        c_a[44] = c_a[41];
+        c_a[41] = c_a[38];
+        c_a[38] = c_a[15];
+        c_a[15] = c_a[14];
+        c_a[14] = c_a[13];
+        c_a[13] = c_a[6];
+        c_a[6] = c_a[5];
+        c_a[5] = c_a[4];
+        c_a[4] = temp_c;
+        flashC();
+    }
+
+    function lMax() {
+        temp_c = c_a[54];
+        c_a[54] = c_a[51];
+        c_a[51] = c_a[48];
+        c_a[48] = c_a[45];
+        c_a[45] = c_a[42];
+        c_a[42] = c_a[39];
+        c_a[39] = c_a[12];
+        c_a[12] = c_a[11];
+        c_a[11] = c_a[10];
+        c_a[10] = c_a[3];
+        c_a[3] = c_a[2];
+        c_a[2] = c_a[1];
+        c_a[1] = temp_c;
+        temp_c = c_a[54];
+        c_a[54] = c_a[51];
+        c_a[51] = c_a[48];
+        c_a[48] = c_a[45];
+        c_a[45] = c_a[42];
+        c_a[42] = c_a[39];
+        c_a[39] = c_a[12];
+        c_a[12] = c_a[11];
+        c_a[11] = c_a[10];
+        c_a[10] = c_a[3];
+        c_a[3] = c_a[2];
+        c_a[2] = c_a[1];
+        c_a[1] = temp_c;
+        temp_c = c_a[54];
+        c_a[54] = c_a[51];
+        c_a[51] = c_a[48];
+        c_a[48] = c_a[45];
+        c_a[45] = c_a[42];
+        c_a[42] = c_a[39];
+        c_a[39] = c_a[12];
+        c_a[12] = c_a[11];
+        c_a[11] = c_a[10];
+        c_a[10] = c_a[3];
+        c_a[3] = c_a[2];
+        c_a[2] = c_a[1];
+        c_a[1] = temp_c;
+        flashC();
+    }
+
+    function flashC() {
+        for (let i = 1; i < 55; i++) {
+            let n = "#b" + i;
+            $(n).prop("class", "ball " + c_a[i]);
+        }
+    }
+
+    function rollC() {
+        let r = Math.random() * 10 + 12;
+        for (let i = 0; i < r; i++) {
+            rollCSingleTime();
+        }
+    }
+
+    function rollCSingleTime() {
+        let r = Math.random() * 18;
+        switch (Math.floor(r)) {
+            case 0:
+                uMin();
+                console.log("uMin");
+                break;
+            case 1:
+                UMin();
+                console.log("UMin");
+                break;
+            case 2:
+                uMid();
+                console.log("uMid");
+                break;
+            case 3:
+                UMid();
+                console.log("UMid");
+                break;
+            case 4:
+                uMax();
+                console.log("uMax");
+                break;
+            case 5:
+                UMax();
+                console.log("UMax");
+                break;
+            case 6:
+                lMin();
+                console.log("lMin");
+                break;
+            case 7:
+                LMin();
+                console.log("LMin");
+                break;
+            case 8:
+                lMid();
+                console.log("lMid");
+                break;
+            case 9:
+                LMid();
+                console.log("LMid");
+                break;
+            case 10:
+                lMax();
+                console.log("lMax");
+                break;
+            case 11:
+                LMax();
+                console.log("LMax");
+                break;
+            case 12:
+                rMin();
+                console.log("rMin");
+                break;
+            case 13:
+                RMin();
+                console.log("RMin");
+                break;
+            case 14:
+                rMid();
+                console.log("rMid");
+                break;
+            case 15:
+                RMid();
+                console.log("RMid");
+                break;
+            case 16:
+                rMax();
+                console.log("rMax");
+                break;
+            case 17:
+                RMax();
+                console.log("RMax");
+                break;
+            default:
+                console.log("wrong para.")
+                break;
+        }
+    }
+
+    $(function () {
+        iniC();
+    });
+
+    function iniC() {
+        c_a = ["w_c",
+            "w_c", "w_c", "w_c", "w_c", "w_c", "w_c", "w_c", "w_c", "w_c",
+            "r_c", "r_c", "r_c", "r_c", "r_c", "r_c", "r_c", "r_c", "r_c",
+            "g_c", "g_c", "g_c", "g_c", "g_c", "g_c", "g_c", "g_c", "g_c",
+            "b_c", "b_c", "b_c", "b_c", "b_c", "b_c", "b_c", "b_c", "b_c",
+            "y_c", "y_c", "y_c", "y_c", "y_c", "y_c", "y_c", "y_c", "y_c",
+            "o_c", "o_c", "o_c", "o_c", "o_c", "o_c", "o_c", "o_c", "o_c"];
+        flashC();
+    }
+
+</script>
+<script src="../Js/navigator.js"></script>
+<script src="../Js/bottomBeiAn.js"></script>
+</body>
+</html>

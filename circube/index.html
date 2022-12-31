@@ -21,9 +21,9 @@
             position: relative;
             justify-content: center;
             align-items: center;
-            top: 10rem;
+            top: 0rem;
             width: 100%;
-            height: 50rem;
+            height: 60rem;
             background-color: wheat;
         }
 
@@ -62,6 +62,7 @@
             width: 30rem;
             height: 30rem;
             border: 1px solid #111111;
+            user-select: none;
         }
 
         .mid {
@@ -72,6 +73,7 @@
             width: 25rem;
             height: 25rem;
             border: 1px solid #111111;
+            user-select: none;
         }
 
         .min {
@@ -82,6 +84,7 @@
             width: 20rem;
             height: 20rem;
             border: 1px solid #111111;
+            user-select: none;
         }
 
         .cw {
@@ -485,6 +488,261 @@
         }
 
     </style>
+    <style>
+        .bg {
+            position: relative;
+            top: 0rem;
+            width: 100%;
+            height: 30rem;
+            background-color: wheat;
+            perspective: 16rem;
+            perspective-origin: top;
+        }
+
+        .ABOVE1 {
+            position: absolute;
+            top: 0rem;
+            left: 40%;
+            transform: scale3d(0.95, 0.95, 1);
+        }
+
+        .ABOVE2 {
+            position: absolute;
+            top: 2.5rem;
+            left: 37%;
+        }
+
+        .ABOVE3 {
+            position: absolute;
+            top: 5rem;
+            left: 34%;
+        }
+
+        #above1 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above2 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above3 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above4 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above5 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above6 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above7 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above8 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        #above9 {
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(1, -0.4, 0.26, 76deg);
+        }
+
+        .FRONT1 {
+            position: absolute;
+            top: 9rem;
+            left: 33%;
+        }
+
+        .FRONT2 {
+            position: absolute;
+            top: 14.2rem;
+            left: 33%;
+        }
+
+        .FRONT3 {
+            position: absolute;
+            top: 19.4rem;
+            left: 33%;
+        }
+
+        #front1 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front2 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front3 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front4 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front5 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front6 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front7 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front8 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        #front9 {
+            width: 5rem;
+            height: 5rem;
+            transform: scale3d(0.9, 0.9, 1);
+        }
+
+        .SIDE1 {
+            position: absolute;
+            top: 7.9rem;
+            left: 47.7%;
+        }
+
+        .SIDE2 {
+            position: absolute;
+            top: 13.3rem;
+            left: 47.7%;
+        }
+
+        .SIDE3 {
+            position: absolute;
+            top: 18.7rem;
+            left: 47.7%;
+        }
+
+        #side1 {
+            position: absolute;
+            top: 0rem;
+            left: 0rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 71deg);
+        }
+
+        #side2 {
+            position: absolute;
+            top: -2.2rem;
+            left: 2.5rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 71deg);
+        }
+
+        #side3 {
+            position: absolute;
+            top: -4.5rem;
+            left: 5rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 72deg);
+        }
+
+        #side4 {
+            position: absolute;
+            top: 0rem;
+            left: 0rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 71deg);
+        }
+
+        #side5 {
+            position: absolute;
+            top: -2.2rem;
+            left: 2.5rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 71deg);
+        }
+
+        #side6 {
+            position: absolute;
+            top: -4.5rem;
+            left: 5rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 72deg);
+        }
+
+        #side7 {
+            position: absolute;
+            top: 0rem;
+            left: 0rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 71deg);
+        }
+
+        #side8 {
+            position: absolute;
+            top: -2.2rem;
+            left: 2.5rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 71deg);
+        }
+
+        #side9 {
+            position: absolute;
+            top: -4.5rem;
+            left: 5rem;
+            width: 5rem;
+            height: 5rem;
+            transform: rotate3d(-0.2, 1, -0.15, 72deg);
+        }
+    </style>
 </head>
 <body>
 
@@ -589,7 +847,53 @@
         <div id="b53" class="ball o_c"></div>
         <div id="b54" class="ball o_c"></div>
     </div>
-
+</div>
+<div class="bg">
+    <div class="ABOVE1">
+        <div id="above1"></div>
+        <div id="above2"></div>
+        <div id="above3"></div>
+    </div>
+    <div class="ABOVE2">
+        <div id="above4"></div>
+        <div id="above5"></div>
+        <div id="above6"></div>
+    </div>
+    <div class="ABOVE3">
+        <div id="above7"></div>
+        <div id="above8"></div>
+        <div id="above9"></div>
+    </div>
+    <div class="FRONT1">
+        <div id="front1"></div>
+        <div id="front2"></div>
+        <div id="front3"></div>
+    </div>
+    <div class="FRONT2">
+        <div id="front4"></div>
+        <div id="front5"></div>
+        <div id="front6"></div>
+    </div>
+    <div class="FRONT3">
+        <div id="front7"></div>
+        <div id="front8"></div>
+        <div id="front9"></div>
+    </div>
+    <div class="SIDE1">
+        <div id="side1"></div>
+        <div id="side2"></div>
+        <div id="side3"></div>
+    </div>
+    <div class="SIDE2">
+        <div id="side4"></div>
+        <div id="side5"></div>
+        <div id="side6"></div>
+    </div>
+    <div class="SIDE3">
+        <div id="side7"></div>
+        <div id="side8"></div>
+        <div id="side9"></div>
+    </div>
 </div>
 
 
@@ -614,6 +918,7 @@
         c_a[44] = temp_c;
         flashC();
     }
+
     function RMinSingleTime() {
         temp_c = c_a[27];
         c_a[27] = c_a[26];
@@ -637,6 +942,7 @@
 
         flashC();
     }
+
     function RMidSingleTime() {
         temp_c = c_a[24];
         c_a[24] = c_a[23];
@@ -670,6 +976,7 @@
 
         flashC();
     }
+
     function RMaxSingleTime() {
         temp_c = c_a[21];
         c_a[21] = c_a[20];
@@ -702,6 +1009,7 @@
         c_a[42] = temp_c;
         flashC();
     }
+
     function rMinSingleTime() {
         temp_c = c_a[48];
         c_a[48] = c_a[47];
@@ -724,6 +1032,7 @@
         rMidSingleTime();
         flashC();
     }
+
     function rMidSingleTime() {
         temp_c = c_a[51];
         c_a[51] = c_a[50];
@@ -756,6 +1065,7 @@
         c_a[8] = temp_c;
         flashC();
     }
+
     function rMaxSingleTime() {
         temp_c = c_a[54];
         c_a[54] = c_a[53];
@@ -788,6 +1098,7 @@
         c_a[11] = temp_c;
         flashC();
     }
+
     function UMinSingleTime() {
         temp_c = c_a[3];
         c_a[3] = c_a[6];
@@ -810,6 +1121,7 @@
         UMidSingleTime();
         flashC();
     }
+
     function UMidSingleTime() {
         temp_c = c_a[2];
         c_a[2] = c_a[5];
@@ -842,6 +1154,7 @@
         c_a[49] = temp_c;
         flashC();
     }
+
     function UMaxSingleTime() {
         temp_c = c_a[1];
         c_a[1] = c_a[4];
@@ -874,6 +1187,7 @@
         c_a[13] = temp_c;
         flashC();
     }
+
     function uMinSingleTime() {
         temp_c = c_a[19];
         c_a[19] = c_a[22];
@@ -896,6 +1210,7 @@
         uMidSingleTime();
         flashC();
     }
+
     function uMidSingleTime() {
         temp_c = c_a[20];
         c_a[20] = c_a[23];
@@ -961,6 +1276,7 @@
         c_a[29] = temp_c;
         flashC();
     }
+
     function LMinSingleTime() {
         temp_c = c_a[7];
         c_a[7] = c_a[8];
@@ -983,6 +1299,7 @@
         LMidSingleTime();
         flashC();
     }
+
     function LMidSingleTime() {
         temp_c = c_a[4];
         c_a[4] = c_a[5];
@@ -1015,6 +1332,7 @@
         c_a[20] = temp_c;
         flashC();
     }
+
     function LMaxSingleTime() {
         temp_c = c_a[1];
         c_a[1] = c_a[2];
@@ -1047,6 +1365,7 @@
         c_a[33] = temp_c;
         flashC();
     }
+
     function lMinSingleTime() {
         temp_c = c_a[52];
         c_a[52] = c_a[49];
@@ -1069,6 +1388,7 @@
         lMidSingleTime();
         flashC();
     }
+
     function lMidSingleTime() {
         temp_c = c_a[53];
         c_a[53] = c_a[50];
@@ -1101,6 +1421,7 @@
         c_a[22] = temp_c;
         flashC();
     }
+
     function lMaxSingleTime() {
         temp_c = c_a[54];
         c_a[54] = c_a[51];
@@ -1119,8 +1440,16 @@
 
     function flashC() {
         for (let i = 1; i < 55; i++) {
-            let n = "#b" + i;
-            $(n).prop("class", "ball " + c_a[i]);
+            $("#b" + i).prop("class", "ball " + c_a[i]);
+        }
+        for (let i = 1; i < 10; i++) {
+            $("#above" + i).prop("class", c_a[i + 9]);
+        }
+        for (let i = 1; i < 10; i++) {
+            $("#front" + i).prop("class", c_a[i + 27]);
+        }
+        for (let i = 1; i < 10; i++) {
+            $("#side" + i).prop("class", c_a[i + 36]);
         }
     }
 

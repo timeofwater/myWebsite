@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隨機單中buff查詢</title>
+    <script src="/Js/jquery-3.6.0.min.js"></script>
+    <script src="/Js/frame.js"></script>
+</head>
+<body>
+<div id="container">
+    <table>
+        <tr id="firstLine">
+            <th>英雄</th>
+            <th>buff效果</th>
+            <th>更新時間</th>
+            <th>操作</th>
+        </tr>
+        <tr id="lastLine">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button id="addButton">新增</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="../../.data/lolBuffData.js"></script>
+<script>
+    $(document).ready(function () {
+        // page property
+        $("head").append("<meta lang=\"zh-CN\">")
+
+        // flash the table
+        for (let i = 0; i < lolBuffData.length; i++) {
+            $("#lastLine").before(addLine(lolBuffData[i].h,
+                lolBuffData[i].b,
+                lolBuffData[i].t,
+                i));
+        }
+
+        // style
+        var tableWidth = 200;
+        $("#container").css({
+            "display": "block",
+            "margin": "auto",
+            "margin-top": "50px",
+            "width": tableWidth * 4 + "px",
+        });
+        $("td").css({
+            "width": tableWidth + "px",
+            "text-align": "center",
+            "border-top": "1px solid white",
+        });
+    });
+
+    function addLine(h, b, t, i) {
+        var hi = document.createElement("td");
+        hi.innerText = h;
+        var bi = document.createElement("td");
+        bi.innerText = b;
+        var ti = document.createElement("td");
+        ti.innerText = t;
+        var oi = document.createElement("td");
+        var di = document.createElement("input");
+        $(di).prop("style", "display: none;");
+        var copyContent = h + "的buff效果：" + b + "\n數據來自zmbunny.com（" + t + "）";
+        di.value = copyContent;
+        oi.innerHTML = "<button onclick='copyText(" + i + ")'>複製</button>";
+        oi.append(di);
+        var rs = document.createElement("tr");
+        $(rs).prop("id", i);
+        rs.append(hi);
+        rs.append(bi);
+        rs.append(ti);
+        rs.append(oi);
+        return rs;
+    }
+
+    function copyText(i) {
+        var ii = $("#" + i).children().last().children("input");
+        $(ii).prop("style", "display: block;");
+        ii.select();
+        document.execCommand("Copy");
+        $(ii).prop("style", "display: none;");
+        var tip = document.createElement("span");
+        tip.innerText = "複製成功";
+        $(tip).prop("class", "tip");
+        $(ii).before(tip);
+        setTimeout(function () {
+            $(ii).siblings(".tip").remove();
+        }, 1500);
+    }
+</script>
+</body>
+</html>

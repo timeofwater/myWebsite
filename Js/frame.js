@@ -1,4 +1,4 @@
-// with jquery-3.6.0.min.js
+// with jquery-3.6.0.min.js before this
 
 /**
  * use this frame by add '<script src="/Js/jquery-3.6.0.min.js"></script>' in <head>
